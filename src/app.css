@@ -1,0 +1,10 @@
+.hidden {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: monospace;
+  background-color: #72a0c1;
+  color: #b284be;
+}
