@@ -3,8 +3,52 @@
 }
 
 body {
+  padding: 1rem;
   margin: 0;
   font-family: monospace;
-  background-color: #72a0c1;
+  /* background-color: #72a0c1; */
   color: #b284be;
+}
+
+#login-btn {
+  position: relative;
+  background-color: #011110;
+  border: none;
+  border-radius: 5px;
+  font-family: monospace;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 16px;
+  justify-self: center;
+}
+
+form {
+  border-radius: 5px;
+  height: 3rem;
+  width: 60%;
+  font-size: 18px;
+  margin: 3px;
+}
+.activity-container {
+}
+
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 0.5rem;
+  width: 15rem;
+  height: 30rem;
+  display: inline-grid;
+  margin: 0.5rem;
+  box-shadow: 3px 4px#72a0c1;
+}
+
+img {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+}
+h4 {
+  margin: 0;
+  padding: 0;
 }
