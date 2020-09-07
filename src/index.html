@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>What Should we Do</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <h1>What Should we Do</h1>
+    <main id="main">
+      <form id="login-form">
+        <input placeholder="Type your name" />
+        <input placeholder="Type your address" />
+        <button id="login-btn">Login</button>
+      </form>
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <form id="new-Activity-Form">
+          <input placeholder="Activity Name" />
+          <input placeholder="Adress" />
+          <input placeholder="City" />
+          <input placeholder="State" />
+          <input placeholder="Zip Code" />
+          <input placeholder="Description" />
+          <input placeholder="Image URL" />
+          <button id="new-activity-btn">Create New Activity</button>
+        </form>
+        <!-- <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a> -->
+      </div>
+
+      <div id="main">
+        <button class="openbtn" onclick="openNav()">
+          &#9776; Open Sidebar
+        </button>
+        <!-- <h2>Collapsed Sidebar</h2>
+        <p>Content...</p> -->
+      </div>
+
+      <div id="activity-container"></div>
+    </main>
+    <script defer type="text/javascript" src="index.js"></script>
+  </body>
+</html>
