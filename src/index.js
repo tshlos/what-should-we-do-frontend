@@ -63,7 +63,7 @@ function appendActivities(activity) {
   img.style.width = "100%";
 
   div.append(h2, h3, img, h4, p, ul);
-  activitiesContainer.append(div);
+  activitiesContainer.appendChild(div);
 }
 
 function createCommentList(comments) {
@@ -85,40 +85,52 @@ function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
+    const formFiled = event.target.children;
 
-    const name = event.target.children[0].value;
-    const address = event.target.children[1].value;
-    const city = event.target.children[2].value;
-    const state = event.target.children[3].value;
-    const zipcode = event.target.children[4].value;
-    const description = event.target.children[5].value;
-    const image = event.target.children[6].value;
-    const category = event.target.children[7].value;
+    const name = formFiled[0].value;
+    const address = formFiled[1].value;
+    const city = formFiled[2].value;
+    const state = formFiled[3].value;
+    const zipcode = formFiled[4].value;
+    const description = formFiled[5].value;
+    const image = formFiled[6].value;
+    const category = formFiled[7].value;
 
-    const newActivity = {
-      name: name,
-      address: address,
-      city: city,
-      stat: state,
-      zipcode: zipcode,
-      description: description,
-      image: image,
-      category: category,
-      comments: [],
+    const body = {
+      activity: {
+        name,
+        address,
+        city,
+        zipcode,
+        state,
+        description,
+        image,
+        category,
+        comments: [],
+      },
     };
 
     const options = {
       method: "POST",
+      body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(newActivity),
     };
-    // Getting 404 error when posting
+
     fetch(activitiesURL, options)
       .then((response) => response.json())
-      .then((newActivity) => console.log(newActivity))
-      .catch((error) => alert("error!"));
+      .then((activity) => appendActivities(activity));
+
+    formFiled[0].value = " ";
+    formFiled[1].value = " ";
+    formFiled[2].value = " ";
+    formFiled[3].value = " ";
+    formFiled[4].value = " ";
+    formFiled[5].value = " ";
+    formFiled[6].value = " ";
+    formFiled[7].value = " ";
   });
 }
 
