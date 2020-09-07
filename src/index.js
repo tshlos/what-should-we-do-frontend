@@ -18,7 +18,7 @@ function listenToLoginForm() {
       loginForm.className = "hidden";
       fetchActivities();
     } else {
-      console.error("error");
+      alert("error!");
     }
   });
 }
@@ -85,6 +85,40 @@ function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
+
+    const name = event.target.children[0].value;
+    const address = event.target.children[1].value;
+    const city = event.target.children[2].value;
+    const state = event.target.children[3].value;
+    const zipcode = event.target.children[4].value;
+    const description = event.target.children[5].value;
+    const image = event.target.children[6].value;
+    const category = event.target.children[7].value;
+
+    const newActivity = {
+      name: name,
+      address: address,
+      city: city,
+      stat: state,
+      zipcode: zipcode,
+      description: description,
+      image: image,
+      category: category,
+      comments: [],
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newActivity),
+    };
+    // Getting 404 error when posting
+    fetch(activitiesURL, options)
+      .then((response) => response.json())
+      .then((newActivity) => console.log(newActivity))
+      .catch((error) => alert("error!"));
   });
 }
 
