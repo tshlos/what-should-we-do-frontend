@@ -18,7 +18,7 @@ function listenToLoginForm() {
       loginForm.className = "hidden";
       fetchActivities();
     } else {
-      console.error("error");
+      alert("error!");
     }
   });
 }
@@ -63,7 +63,7 @@ function appendActivities(activity) {
   img.style.width = "100%";
 
   div.append(h2, h3, img, h4, p, ul);
-  activitiesContainer.append(div);
+  activitiesContainer.appendChild(div);
 }
 
 function createCommentList(comments) {
@@ -85,6 +85,52 @@ function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
+    const formFiled = event.target.children;
+
+    const name = formFiled[0].value;
+    const address = formFiled[1].value;
+    const city = formFiled[2].value;
+    const state = formFiled[3].value;
+    const zipcode = formFiled[4].value;
+    const description = formFiled[5].value;
+    const image = formFiled[6].value;
+    const category = formFiled[7].value;
+
+    const body = {
+      activity: {
+        name,
+        address,
+        city,
+        zipcode,
+        state,
+        description,
+        image,
+        category,
+        comments: [],
+      },
+    };
+
+    const options = {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    fetch(activitiesURL, options)
+      .then((response) => response.json())
+      .then((activity) => appendActivities(activity));
+
+    formFiled[0].value = " ";
+    formFiled[1].value = " ";
+    formFiled[2].value = " ";
+    formFiled[3].value = " ";
+    formFiled[4].value = " ";
+    formFiled[5].value = " ";
+    formFiled[6].value = " ";
+    formFiled[7].value = " ";
   });
 }
 
