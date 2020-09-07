@@ -5,23 +5,9 @@ const activitiesURL = "http://localhost:3000/api/v1/activities";
 const mainTag = document.querySelector("main");
 const loginForm = document.getElementById("login-form");
 const mySidebar = document.getElementById("mySidebar");
-
-// createLoginForm();
-listenToLoginForm();
-function listenToLoginForm() {
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (
-      event.target.childNodes[0].value !== "" &&
-      event.target.childNodes[1].value !== ""
-    ) {
-      loginForm.className = "hidden";
-      fetchActivities();
-    } else {
-      alert("error!");
-    }
-  });
-}
+const unlike = "♡";
+const like = "♥";
+fetchActivities(); // replace listenToLoginForm();
 
 function fetchActivities() {
   fetch(activitiesURL)
@@ -51,6 +37,7 @@ function appendActivities(activity) {
   const p = document.createElement("p"); // description
   const img = document.createElement("img"); // image
   const ul = document.createElement("ul"); // comments
+  const heart = document.createElement("span"); // likes
 
   div.className = "card";
   div.style = "overflow:scroll";
@@ -61,8 +48,10 @@ function appendActivities(activity) {
   ul.innerHTML += createCommentList(activity.comments);
   img.src = activity.image;
   img.style.width = "100%";
+  heart.className = "like";
+  heart.textContent = unlike;
 
-  div.append(h2, h3, img, h4, p, ul);
+  div.append(heart, h2, h3, img, h4, p, ul);
   activitiesContainer.appendChild(div);
 }
 
@@ -71,8 +60,8 @@ function createCommentList(comments) {
 }
 
 function openNav() {
-  mySidebar.style.width = "50%";
-  document.getElementById("main").style.marginLeft = "50%";
+  mySidebar.style.width = "25%";
+  document.getElementById("main").style.marginLeft = "25%";
   createNewActivity();
 }
 
@@ -107,6 +96,7 @@ function createNewActivity() {
         image,
         category,
         comments: [],
+        user_activities: [],
       },
     };
 
@@ -133,6 +123,25 @@ function createNewActivity() {
     formFiled[7].value = " ";
   });
 }
+
+function addToLikeList() {}
+
+// createLoginForm();
+// listenToLoginForm();
+// function listenToLoginForm() {
+//   loginForm.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     if (
+//       event.target.childNodes[0].value !== "" &&
+//       event.target.childNodes[1].value !== ""
+//     ) {
+//       loginForm.className = "hidden";
+//       fetchActivities();
+//     } else {
+//       alert("error!");
+//     }
+//   });
+// }
 
 // function createLoginForm() {
 //   const nameInputTag = document.createElement("input");

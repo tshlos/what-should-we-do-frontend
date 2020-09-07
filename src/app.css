@@ -12,7 +12,7 @@ body {
   color: #b284be;
 }
 
-#login-btn {
+/* #login-btn {
   position: relative;
   background-color: #011110;
   border: none;
@@ -21,7 +21,7 @@ body {
   color: whitesmoke;
   font-size: 16px;
   justify-self: center;
-}
+} */
 
 form {
   border-radius: 5px;
