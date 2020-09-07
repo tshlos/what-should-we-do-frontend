@@ -1,6 +1,3 @@
-// fetch Get to all users : http://localhost:3000/api/v1/users
-// fetch Get to all comments: http://localhost:3000/api/v1/comments
-
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 const mainTag = document.querySelector("main");
 const loginForm = document.getElementById("login-form");
@@ -38,8 +35,10 @@ function appendActivities(activity) {
   const img = document.createElement("img"); // image
   const ul = document.createElement("ul"); // comments
   const heart = document.createElement("span"); // likes
+  const likeText = document.createElement("p"); // likes
 
   div.className = "card";
+  div.id = activity.id;
   div.style = "overflow:scroll";
   h2.textContent = activity.name;
   h4.textContent = activity.category;
@@ -50,8 +49,9 @@ function appendActivities(activity) {
   img.style.width = "100%";
   heart.className = "like";
   heart.textContent = unlike;
+  likeText.textContent = `${activity.likes} likes`;
 
-  div.append(heart, h2, h3, img, h4, p, ul);
+  div.append(heart, likeText, h2, h3, img, h4, p, ul);
   activitiesContainer.appendChild(div);
 }
 
@@ -123,8 +123,6 @@ function createNewActivity() {
     formFiled[7].value = " ";
   });
 }
-
-function addToLikeList() {}
 
 // createLoginForm();
 // listenToLoginForm();
