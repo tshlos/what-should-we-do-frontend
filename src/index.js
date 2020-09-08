@@ -4,7 +4,10 @@ const loginForm = document.getElementById("login-form");
 const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
+
+const activityList = [];
 fetchActivities(); // replace listenToLoginForm();
+// const createDD = createDropDown();
 
 function fetchActivities() {
   fetch(activitiesURL)
@@ -53,6 +56,11 @@ function appendActivities(activity) {
 
   div.append(heart, likeText, h2, h3, img, h4, p, ul);
   activitiesContainer.appendChild(div);
+  addToActivityList(activity.category);
+}
+
+function addToActivityList(category) {
+  return activityList.push(category);
 }
 
 function createCommentList(comments) {

@@ -1,6 +1,8 @@
 addLikeToActivity();
+
 function addLikeToActivity() {
-  mainTag.addEventListener("click", function (event) {
+  const activityContainer = document.getElementById("activity-container");
+  activityContainer.addEventListener("click", function (event) {
     let likeBtn = event.target;
     const activityID = event.target.parentElement.id;
     const likeText = likeBtn.nextElementSibling;
