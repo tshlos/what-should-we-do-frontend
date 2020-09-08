@@ -2,21 +2,25 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>What Should we Do</title>
+    <title>What Should We Do</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css" />
+
   </head>
+
   <body>
-    <h1>What Should we Do</h1>
-    <main>
-      <!-- <form id="login-form">
+    <h1>What Should We Do</h1>
+    <main id="main">
+
+      <form id="login-form">
         <input placeholder="Type your name" />
         <input placeholder="Type your address" />
         <button id="login-btn">Login</button>
-      </form> -->
+      </form>
+
       <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;</a
-        >
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
+        
         <form id="new-Activity-Form">
           <input placeholder="Activity Name" />
           <input placeholder="Adress" />
@@ -40,10 +44,38 @@
         <p>Content...</p> -->
       </div>
 
-      <div id="activity-container"></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="text-center">  
+            <h3 class="name"> </h3>
+            <h6 class="category"> </h6>
+            <img class="image"> </img>
+            <h6 class="address" > </h6>
+            <div class="comments"></div>
+              <div class="comment-value">Comment</div>
+
+            <form class="comment-form"> 
+              <input id="comment-value" type="text" name="comment" placeholder="Add Comment"/>
+              <input type="submit" value="Submit"/>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div id="activity-container"> </div>
+
     </main>
+
     <script defer type="text/javascript" src="likes.js"></script>
     <script defer type="text/javascript" src="activities.js"></script>
+    <script defer type="text/javascript" src="comments.js"></script>
     <script defer type="text/javascript" src="index.js"></script>
+
   </body>
 </html>
