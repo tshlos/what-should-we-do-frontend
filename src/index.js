@@ -5,6 +5,8 @@ const activitiesURL = "http://localhost:3000/api/v1/activities";
 const mainTag = document.querySelector("main");
 const loginForm = document.getElementById("login-form");
 const mySidebar = document.getElementById("mySidebar");
+const activitiesContainer = document.getElementById("activity-container");
+
 
 // createLoginForm();
 listenToLoginForm();
@@ -23,12 +25,21 @@ function listenToLoginForm() {
   });
 }
 
-function fetchActivities() {
-  fetch(activitiesURL)
-    .then((response) => response.json())
-    .then((activities) =>
-      activities.forEach((activity) => appendActivities(activity))
-    );
+// function fetchActivities() {
+//   fetch(activitiesURL)
+//     .then((response) => response.json())
+//     .then((activities) =>
+//       activities.forEach((activity) => appendActivities(activity))
+//     );
+// }
+
+async function fetchActivities() {
+  const response = await fetch(activitiesURL);
+  const activities = await response.json();
+
+  activities.forEach(activity => {
+    appendActivities(activity)
+  });
 }
 
 function appendActivities(activity) {
@@ -43,31 +54,29 @@ function appendActivities(activity) {
     category,
     comments,
   } = activity;
-  const activitiesContainer = document.getElementById("activity-container");
   const div = document.createElement("div"); // card
-  const h2 = document.createElement("h2"); // name
-  const h4 = document.createElement("h4"); // category
-  const h3 = document.createElement("h3"); // address
+  const h4 = document.createElement("h4"); // name
+  const h5 = document.createElement("h5"); // category
+  const h6 = document.createElement("h6"); // address
   const p = document.createElement("p"); // description
   const img = document.createElement("img"); // image
-  const ul = document.createElement("ul"); // comments
+  // const ul = document.createElement("ul"); // comments
 
   div.className = "card";
   div.style = "overflow:scroll";
-  h2.textContent = activity.name;
-  h4.textContent = activity.category;
-  h3.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
+  h4.textContent = activity.name;
+  h5.textContent = activity.category;
+  h6.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
   p.textContent = activity.description;
-  ul.innerHTML += createCommentList(activity.comments);
   img.src = activity.image;
   img.style.width = "100%";
 
-  div.append(h2, h3, img, h4, p, ul);
-  activitiesContainer.appendChild(div);
-}
 
-function createCommentList(comments) {
-  return comments.map((comments) => `<li>${comments.content}</li>`).join(" ");
+  div.append(h4, h5, img, h6, p);
+  activitiesContainer.append(div);
+
+
+    listComments(div, activity);
 }
 
 function openNav() {
