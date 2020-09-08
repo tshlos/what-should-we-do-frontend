@@ -1,17 +1,18 @@
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 const myLatLng = { lat: 47.6205, lng: -122.3493 };
+let map;
 // const icons = {
 //   coffee: {
 //     icon: = 'assets/images/'coffee
 //   }
 
 function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map"), {
     zoom: 15,
 
     center: myLatLng,
-    const geocoder = new google.maps.Geocoder();
   });
+  const geocoder = new google.maps.Geocoder();
   document.getElementById("submit").addEventListener("click", () => {
     geocodeAddress(geocoder, map);
   });
@@ -20,13 +21,14 @@ function initMap() {
 function geocodeAddress(geocoder, resultsMap) {
   const address = document.getElementById("address").value;
   geocoder.geocode(
-    { address: address }, 
+    { address: address },
     (results, status) => {
       if (status === "OK") {
         resultsMap.setCenter(results[0].geometry.location);
         new google.maps.Marker({
-          map: map,
+          map: resultsMap,
           position: results[0].geometry.location,
+          animation: google.maps.Animation.Drop,
         });
       } else {
         alert("Geocode was not successful for the following reason: " + status);
@@ -37,48 +39,31 @@ function geocodeAddress(geocoder, resultsMap) {
   );
 }
 
+fetchActivities();
+
 function fetchActivities() {
   fetch(activitiesURL)
     .then((response) => response.json())
     .then((activities) =>
-      activities.forEach((activity) => combineAddresses(activity))
+      activities.forEach((activity) => addMarkers(activity))
     );
 }
 
-// function combineAddresses(activity) {
-//   const {
-//     name,
-//     address,
-//     city,
-//     state,
-//     zipcode,
-//     description,
-//     image,
-//     category,
-//     comments,
-//   } = activity;
+function addMarkers(activity) {
+  debugger;
+  let marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.Drop,
+    position: { lat: activity.latitude, lng: activity.longitude },
+    // const myLatLng = { lat: 47.6205, lng: -122.3493 };
+    title: activity.name,
+  });
 
-//   const fullAddress = address + ", " + city;
-//   getCoordinates(activity, fullAddress);
-
-//   // need to geocode addresses so pass these into a geocoder basically.
-// }
-
-// function getCoordinates(activity, fullAddress) {
-//   console.log(activity);
-//   debugger;
-
-//   console.log(fullAddress);
-
-//   const addressGeocoder = new google.maps.Geocoder();
-//   addressGeocoder.geocode(
-//     {
-//       address: fullAddress,
-//     },
-//     function (results) {
-//       console.log(results[0].geometry.location); //LatLng
-//     }
-//   );
+  console.log(activity.latitude);
+  console.log(activity.longitude);
+  debugger;
+  // need to geocode addresses so pass these into a geocoder basically.
 }
 
-fetchActivities();
+// fetchActivities();
