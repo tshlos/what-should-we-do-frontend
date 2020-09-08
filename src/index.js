@@ -1,37 +1,27 @@
 const activitiesURL = "http://localhost:3000/api/v1/activities";
-const mainTag = document.querySelector("main");
+
+const activitiesContainer = document.getElementById("activity-container");
 const loginForm = document.getElementById("login-form");
 const mySidebar = document.getElementById("mySidebar");
 
 const unlike = "♡";
 const like = "♥";
-const activitiesContainer = document.getElementById("activity-container");
-
-
 
 const activityList = [];
 fetchActivities(); // replace listenToLoginForm();
-// const createDD = createDropDown();
-
-// function fetchActivities() {
-//   fetch(activitiesURL)
-//     .then((response) => response.json())
-//     .then((activities) =>
-//       activities.forEach((activity) => appendActivities(activity))
-//     );
-// }
 
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
   const activities = await response.json();
 
-  activities.forEach(activity => {
-    appendActivities(activity)
+  activities.forEach((activity) => {
+    appendActivities(activity);
   });
 }
 
 function appendActivities(activity) {
   const {
+    id,
     name,
     address,
     city,
@@ -41,6 +31,7 @@ function appendActivities(activity) {
     image,
     category,
     comments,
+    likes,
   } = activity;
   const div = document.createElement("div"); // card
   const h4 = document.createElement("h4"); // name
@@ -53,36 +44,28 @@ function appendActivities(activity) {
   const heart = document.createElement("span"); // likes
   const likeText = document.createElement("p"); // likes
 
-
   div.className = "card";
-  div.id = activity.id;
+  div.id = id;
   div.style = "overflow:scroll";
-  h4.textContent = activity.name;
-  h5.textContent = activity.category;
-  h6.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
-  p.textContent = activity.description;
-  img.src = activity.image;
+  h4.textContent = name;
+  h5.textContent = category;
+  h6.textContent = `${address}, ${city}, ${state}`;
+  p.textContent = description;
+  img.src = image;
   img.style.width = "100%";
   heart.className = "like";
   heart.textContent = unlike;
-  likeText.textContent = `${activity.likes} likes`;
+  likeText.textContent = `${likes} likes`;
 
-
-  div.append(heart, likeText, h2, h3, img, h4, p, ul);
+  div.append(heart, likeText, h4, h5, img, h6, p);
   activitiesContainer.appendChild(div);
+
+  listComments(div, activity);
   addToActivityList(activity.category);
 }
 
 function addToActivityList(category) {
   return activityList.push(category);
-}
-
-
-  div.append(h4, h5, img, h6, p);
-  activitiesContainer.append(div);
-
-
-    listComments(div, activity);
 }
 
 function openNav() {
@@ -122,6 +105,7 @@ function createNewActivity() {
         image,
         category,
         comments: [],
+        likes: 0,
         user_activities: [],
       },
     };
