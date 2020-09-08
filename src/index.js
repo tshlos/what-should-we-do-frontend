@@ -1,29 +1,17 @@
-// fetch Get to all users : http://localhost:3000/api/v1/users
-// fetch Get to all comments: http://localhost:3000/api/v1/comments
-
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 const mainTag = document.querySelector("main");
 const loginForm = document.getElementById("login-form");
 const mySidebar = document.getElementById("mySidebar");
+
+const unlike = "♡";
+const like = "♥";
 const activitiesContainer = document.getElementById("activity-container");
 
 
-// createLoginForm();
-listenToLoginForm();
-function listenToLoginForm() {
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    if (
-      event.target.childNodes[0].value !== "" &&
-      event.target.childNodes[1].value !== ""
-    ) {
-      loginForm.className = "hidden";
-      fetchActivities();
-    } else {
-      alert("error!");
-    }
-  });
-}
+
+const activityList = [];
+fetchActivities(); // replace listenToLoginForm();
+// const createDD = createDropDown();
 
 // function fetchActivities() {
 //   fetch(activitiesURL)
@@ -60,9 +48,14 @@ function appendActivities(activity) {
   const h6 = document.createElement("h6"); // address
   const p = document.createElement("p"); // description
   const img = document.createElement("img"); // image
-  // const ul = document.createElement("ul"); // comments
+
+  const ul = document.createElement("ul"); // comments
+  const heart = document.createElement("span"); // likes
+  const likeText = document.createElement("p"); // likes
+
 
   div.className = "card";
+  div.id = activity.id;
   div.style = "overflow:scroll";
   h4.textContent = activity.name;
   h5.textContent = activity.category;
@@ -70,6 +63,19 @@ function appendActivities(activity) {
   p.textContent = activity.description;
   img.src = activity.image;
   img.style.width = "100%";
+  heart.className = "like";
+  heart.textContent = unlike;
+  likeText.textContent = `${activity.likes} likes`;
+
+
+  div.append(heart, likeText, h2, h3, img, h4, p, ul);
+  activitiesContainer.appendChild(div);
+  addToActivityList(activity.category);
+}
+
+function addToActivityList(category) {
+  return activityList.push(category);
+}
 
 
   div.append(h4, h5, img, h6, p);
@@ -80,8 +86,8 @@ function appendActivities(activity) {
 }
 
 function openNav() {
-  mySidebar.style.width = "50%";
-  document.getElementById("main").style.marginLeft = "50%";
+  mySidebar.style.width = "25%";
+  document.getElementById("main").style.marginLeft = "25%";
   createNewActivity();
 }
 
@@ -116,6 +122,7 @@ function createNewActivity() {
         image,
         category,
         comments: [],
+        user_activities: [],
       },
     };
 
@@ -142,6 +149,23 @@ function createNewActivity() {
     formFiled[7].value = " ";
   });
 }
+
+// createLoginForm();
+// listenToLoginForm();
+// function listenToLoginForm() {
+//   loginForm.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     if (
+//       event.target.childNodes[0].value !== "" &&
+//       event.target.childNodes[1].value !== ""
+//     ) {
+//       loginForm.className = "hidden";
+//       fetchActivities();
+//     } else {
+//       alert("error!");
+//     }
+//   });
+// }
 
 // function createLoginForm() {
 //   const nameInputTag = document.createElement("input");
