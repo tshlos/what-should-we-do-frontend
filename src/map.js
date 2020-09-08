@@ -1,6 +1,7 @@
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 const myLatLng = { lat: 47.6205, lng: -122.3493 };
 let map;
+fetchActivities();
 // const icons = {
 //   coffee: {
 //     icon: = 'assets/images/'coffee
@@ -38,8 +39,6 @@ function geocodeAddress(geocoder, resultsMap) {
     //probably call for fetch other markers here
   );
 }
-
-fetchActivities();
 
 function fetchActivities() {
   fetch(activitiesURL)
