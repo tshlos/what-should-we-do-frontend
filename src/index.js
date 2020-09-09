@@ -1,14 +1,14 @@
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 
 const activitiesContainer = document.getElementById("activity-container");
-const loginForm = document.getElementById("login-form");
+
 const mySidebar = document.getElementById("mySidebar");
 
 const unlike = "♡";
 const like = "♥";
 
 let activityList = [];
-fetchActivities(); // replace listenToLoginForm();
+fetchActivities();
 
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
@@ -42,17 +42,15 @@ function appendActivities(activity) {
 
   const ul = document.createElement("ul"); // comments
   const heart = document.createElement("span"); // likes
-  const likeText = document.createElement("p"); // likes
+  const likeText = document.createElement("span"); // likes
 
   div.className = `card ${category}`;
   div.id = id;
-  div.style = "overflow:scroll";
   h4.textContent = name;
   h5.textContent = category;
   h6.textContent = `${address}, ${city}, ${state}`;
   p.textContent = description;
   img.src = image;
-  img.style.width = "100%";
   heart.className = "like";
   heart.textContent = unlike;
   likeText.textContent = `${likes} likes`;
@@ -68,7 +66,6 @@ function appendActivities(activity) {
 
 function addToActivityList(category) {
   activityList.push(category);
-  //   categoryList();
 }
 
 function openNav() {
@@ -137,37 +134,6 @@ function createNewActivity() {
     formFiled[7].value = " ";
   });
 }
-
-// createLoginForm();
-// listenToLoginForm();
-// function listenToLoginForm() {
-//   loginForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     if (
-//       event.target.childNodes[0].value !== "" &&
-//       event.target.childNodes[1].value !== ""
-//     ) {
-//       loginForm.className = "hidden";
-//       fetchActivities();
-//     } else {
-//       alert("error!");
-//     }
-//   });
-// }
-
-// function createLoginForm() {
-//   const nameInputTag = document.createElement("input");
-//   const addressInputTag = document.createElement("input");
-//   const btn = document.createElement("button");
-
-//   form.className = "login-form";
-//   addressInputTag.placeholder = "Type your address";
-//   nameInputTag.placeholder = "Type your name";
-//   btn.textContent = "Login";
-//   btn.id = "login-btn";
-
-//   form.append(nameInputTag, addressInputTag, btn);
-// }
 
 // function createNewActivity() {
 //     const form = document.createElement("form");

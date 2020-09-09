@@ -1,90 +1,50 @@
+
 .delete-button {
   padding: 0;
   border: none;
   background: none;
 }
-/* The Modal (background) */
-.modal {
-  /* display: none; Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .hidden {
   display: none;
 }
 * {
-  font-family: monospace;
-  margin: 3px;
+  font-family: "Lato";
+  margin: 5px;
+  color: #1c3b63;
+  /* text-align: center; */
 }
 
 body {
+  background-color: ##FBF5F1
   padding: 1rem;
   margin: 0;
-  color: #b284be;
+  border-radius: 30px;
 }
 
-/* #login-btn {
-  position: relative;
-  background-color: #011110;
-  border: none;
-  border-radius: 5px;
-  width: max-content;
-  color: whitesmoke;
-  font-size: 16px;
-  justify-self: center;
-} */
+#main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding: 20px 20px;
+}
 
+#main h1 {
+  text-align: center;
+  
+}
+#login-form {
+  display: none;
+}
 form {
-  border-radius: 5px;
   width: 100%;
   font-size: 18px;
   margin: 5px;
+  line-height: 30px;
+  padding: 25px;
+  /* padding-top: 90px; */
 }
-.activity-container {
-}
-
-.card {
-  text-align: center;
+input {
+  margin: 5px 0;
   border: grey solid 1px;
-  padding: 0.5rem;
-  width: 15rem;
-  height: 25rem;
-  display: inline-grid;
-  margin: 0.5rem;
-  box-shadow: 3px 4px#72a0c1;
+  
 }
 
 img {
@@ -92,6 +52,93 @@ img {
   height: 12rem;
   width: auto;
 }
+#new-activity-btn {
+  margin: 30px 0 10px  10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #1c3b63;
+    color: #acdcd4;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    
+  }
+  .infocard {
+    margin: auto;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #1c3b63;
+    color: #acdcd4;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: none;
+    width: 60%;
+    
+    
+  }
+  
+  #new-activity-btn:hover {
+    background-color: #444
+  }
+    
+.activity-container {
+  align-content: center;
+  text-align: center;
+}
+
+.card {
+  border: #f9d776 solid 10px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 10px;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 0.5rem;
+  overflow:scroll
+  
+}
+.card img{
+  width: 100%;
+}
+.card h4 {
+  font-weight: bold;
+}
+.card h5 {
+  color: #7c459a;
+}
+.card h6 {
+
+}
+.card span.like {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.card span {
+
+
+  display:inline;
+  white-space: nowrap;
+  display:inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7c459a;
+  text-align: left;
+}
+.card p {
+  font-size: 14px;
+  text-align-last: center:
+
+}
+
+.food {
+  border: #d7eff8 solid 10px;
+}
+.coffee {
+  border: #acdcd4 solid 10px;
+}
+
 
 /* The sidebar menu */
 .sidebar {
@@ -101,25 +148,21 @@ img {
   z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
+  margin: 0;
+  background-color: #f9d776;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-/* The sidebar links */
+/* The sidebar links  */
 .sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
+  /* padding: 8px 8px 8px 32px; */
+  /* text-decoration: none;
   font-size: 25px;
-  color: #818181;
   display: block;
   transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #f1f1f1;
+  color: #818181; */
 }
 
 /* Position and style the close button (top right corner) */
@@ -129,27 +172,26 @@ img {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  text-decoration: none;
+  color: #818181;
 }
 
-/* The button used to open the sidebar */
+
 .openbtn {
   font-size: 20px;
   cursor: pointer;
-  background-color: #111;
-  color: white;
+  background-color: #1c3b63;
+  color: #acdcd4;
   padding: 10px 15px;
+  border-radius: 10px;
   border: none;
 }
 
 .openbtn:hover {
-  background-color: #444;
+  background-color: #444
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left 0.5s; /* If you want a transition effect */
-  padding: 10px;
-}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -162,7 +204,7 @@ img {
 }
 
 /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+* element that contains the map. */
 #map {
   position: absolute;
   top: 0;
@@ -192,3 +234,60 @@ body {
   line-height: 30px;
   padding-left: 10px;
 }
+
+
+/* The Modal (background) */
+.modal {
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #acdcd4;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.user-btn {
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  width: max-content;
+  font-size: 16px;
+  justify-self: center;
+}
+
+
+
+  /* When you mouse over the navigation links, change their color */
+  /* .sidebar a:hover {
+    color: #f1f1f1;
+  } */

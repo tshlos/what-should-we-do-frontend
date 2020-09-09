@@ -3,21 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <title>What Should We Do</title>
-    
+
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css" />
 
   </head>
 
   <body>
-    <h1>What Should We Do</h1>
-    <main>
 
-      <!-- <form id="login-form">
-        <input placeholder="Type your name" />
-        <input placeholder="Type your address" />
-        <button id="login-btn">Login</button>
-      </form> -->
+    <main>
+<nav> 
+  <button id="signup">Signup</button>
+  <form id="login-form">
+  <input placeholder=" Your name" />
+  <input placeholder=" Your address" />
+  <input placeholder=" Your city" />
+  <input placeholder=" Your state" />
+  <input placeholder=" Your zip code" />
+  <input placeholder="image url" />
+
+  <button class="user-btn">Signup</button>
+</form></nav>
+     
 
       <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
@@ -40,6 +48,7 @@
       </div>
 
       <div id="main">
+        <h1>What Should We Do</h1>
         <button class="openbtn" onclick="openNav()">&#9776; Open Menu</button>
         <!-- <sort dropdown -->
 
@@ -81,12 +90,13 @@
       <div id="activity-container"> </div>
 
     </main>
-
     <script defer type="text/javascript" src="likes.js"></script>
     <script defer type="text/javascript" src="activities.js"></script>
     <script defer type="text/javascript" src="comments.js"></script>
+    <script defer type="text/javascript" src="users.js"></script>
     <script defer type="text/javascript" src="maps.js"></script>
-    <script defer type="text/javascript" src="index.js"></script>
+    <script  type="text/javascript" src="index.js"></script>
+
 
   </body>
 </html>
