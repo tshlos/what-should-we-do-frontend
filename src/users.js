@@ -1,6 +1,8 @@
 const usersURL = "http://localhost:3000/api/v1/users";
-
+const userModal = document.getElementById("userModal");
+const closeModal = userModal.querySelector(".close");
 const loginForm = document.getElementById("login-form");
+
 listenToLoginForm();
 signUP();
 
@@ -15,43 +17,50 @@ function signUP() {
 function listenToLoginForm() {
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    const userInput = event.target;
-    const name = userInput.children[0].value;
-    const address = userInput.children[1].value;
-    const city = userInput.children[2].value;
-    const state = userInput.children[3].value;
-    const zipcode = userInput.children[4].value;
-    const image = userInput.children[5].value;
-    if (name !== "" && address !== "" && city !== "" && state !== "") {
-      fetchUser(name, address, city, state, zipcode, image);
-      updateUserInfo();
-    } else {
-      alert("error!");
-    }
+    fetchUser(createUserElements(event));
   });
 }
 
-async function fetchUser(name, address, city, state, zipcode, image) {
-  const newUser = {
-    name: name,
-    address: address,
-    city: city,
-    state: state,
-    zipcode: zipcode,
-    image: image,
-  };
-  const response = await fetch(usersURL, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newUser),
-  });
+function createUserElements(event) {
+  const userInput = event.target;
+  const name = userInput.children[1].value;
+  const address = userInput.children[3].value;
+  const city = userInput.children[5].value;
+  const state = userInput.children[7].value;
+  const zipcode = userInput.children[9].value;
+  const image = userInput.children[11].value;
 
-  let user = await response.json();
-  loginForm.style.display = "none";
-  helloMessage(user.name, user.id);
+  if (name !== "" && address !== "" && city !== "" && state !== "") {
+    const newUser = {
+      name: name,
+      address: address,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      image: image,
+    };
+    return newUser;
+  } else {
+    alert("error!");
+    return null;
+  }
+}
+
+async function fetchUser(newUser) {
+  if (newUser !== null) {
+    const response = await fetch(usersURL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+
+    let user = await response.json();
+    loginForm.style.display = "none";
+    helloMessage(user.name, user.id);
+  }
 }
 
 function helloMessage(name, id) {
@@ -59,20 +68,78 @@ function helloMessage(name, id) {
   const hello = document.createElement("button");
 
   hello.textContent = `Hello ${name},`;
-  hello.className = "user-btn";
-  hello.id = id;
+  hello.className = "profile-btn";
+  hello.dataset.id = id;
   nav.appendChild(hello);
+  updateUserInfo();
 }
 
 function updateUserInfo() {
-  console.log(hello);
-  //   const button = document.querySelector(".user-btn");
-  //   button.addEventListener("click", function (event) {
-  debugger;
+  const button = document.querySelector(".profile-btn");
+  button.addEventListener("click", function (event) {
+    const userID = event.target.dataset.id;
+
+    fetchSingleUser(userID);
+  });
+}
+async function fetchSingleUser(userID) {
+  const response = await fetch(`${usersURL}/${userID}`);
+  let user = await response.json();
+  openUserCard(user);
 }
 
-// createLoginForm();
+function openUserCard(user) {
+  userModal.style.display = "block";
 
+  closeModal.onclick = function () {
+    userModal.style.display = "none";
+  };
+
+  userModal.dataset.id = user.id;
+  const name = userModal.querySelector(".username");
+  name.placeholder = user.name;
+  const address = userModal.querySelector(".useraddress");
+  address.placeholder = user.address;
+  const city = userModal.querySelector(".usercity");
+  city.placeholder = user.city;
+  const state = userModal.querySelector(".userstate");
+  state.placeholder = user.state;
+  const zipcode = userModal.querySelector(".userzipcode");
+  zipcode.placeholder = user.zipcode;
+  const image = userModal.querySelector(".userimage");
+  image.placeholder = user.image;
+
+  listentoUserUpdate();
+}
+
+function listentoUserUpdate() {
+  const form = document.getElementById("update-User-Form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const userID = +event.target.parentElement.parentElement.dataset.id;
+    updateUser(createUserElements(event), userID);
+  });
+}
+
+async function updateUser(Userinfo, userID) {
+  if (Userinfo !== null) {
+    const options = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(Userinfo),
+    };
+
+    const response = await fetch(`${usersURL}/${userID}`, options);
+    let user = await response.json();
+    alert(`Hey ${user.name} we update your profile`);
+    const button = document.querySelector(".profile-btn");
+    button.textContent = `Hello ${user.name}`;
+    userModal.style.display = "none";
+  }
+}
 // function createLoginForm() {
 //   const nameInputTag = document.createElement("input");
 //   const addressInputTag = document.createElement("input");
