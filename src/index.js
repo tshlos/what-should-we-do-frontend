@@ -7,7 +7,7 @@ const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
 
-const activityList = [];
+let activityList = [];
 fetchActivities(); // replace listenToLoginForm();
 
 async function fetchActivities() {
@@ -44,7 +44,7 @@ function appendActivities(activity) {
   const heart = document.createElement("span"); // likes
   const likeText = document.createElement("p"); // likes
 
-  div.className = "card";
+  div.className = `card ${category}`;
   div.id = id;
   div.style = "overflow:scroll";
   h4.textContent = name;
@@ -62,10 +62,13 @@ function appendActivities(activity) {
 
   listComments(div, activity);
   addToActivityList(activity.category);
+  appendCategory(activity.category);
+  closeNav();
 }
 
 function addToActivityList(category) {
-  return activityList.push(category);
+  activityList.push(category);
+  //   categoryList();
 }
 
 function openNav() {
@@ -121,7 +124,8 @@ function createNewActivity() {
 
     fetch(activitiesURL, options)
       .then((response) => response.json())
-      .then((activity) => appendActivities(activity));
+      .then((activity) => addMarkers(activity));
+    // .then((activity) => appendActivities(activity));
 
     formFiled[0].value = " ";
     formFiled[1].value = " ";
