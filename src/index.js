@@ -6,13 +6,14 @@ const mySidebar = document.getElementById("mySidebar");
 
 const unlike = "♡";
 const like = "♥";
-
+let allActivities = [];
 let activityList = [];
 fetchActivities();
 
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
   const activities = await response.json();
+  allActivities = activities;
 
   activities.forEach((activity) => {
     appendActivities(activity);
