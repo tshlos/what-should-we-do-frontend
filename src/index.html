@@ -54,23 +54,24 @@
       </div>
 
       <div id="main">
+        
         <h1>What Should We Do</h1>
         <button class="openbtn" onclick="openNav()">&#9776; Open Menu</button>
         <!-- <sort dropdown -->
-
+          
           <div class="dropdown-list">
             <label>Sort by category</label>
             <select class="dropdown" name="category">
-             <option> show all </option>
-
+              <option> show all </option>
+              
             </select>
           </div>
     
-
       <!-- The Modal activity card -->
       <div id="myModal" class="modal">
         <!-- Modal content  -->
         <div class="modal-content">
+
           <span class="close">&times;</span>
           <div class="text-center">  
             <h3 class="name"> </h3>
@@ -78,17 +79,17 @@
             <img class="image"> </img>
             <h6 class="address" > </h6>
             <div class="comments"></div>
-              <div class="comment-value">Reviews</div>
-                <!-- <button class="delete-btn">&times;</button> -->
-
+            <div class="comment-value">Reviews</div>
+            <!-- <button class="delete-btn">&times;</button> -->
+            
             <form class="comment-form"> 
               <input id="comment-value" type="text" name="comment" placeholder="Add Comment"/>
               <input type="submit" value="Submit"/>
             </form>
-
+            
           </div>
         </div>
-
+        
       </div>
 
       
@@ -124,17 +125,32 @@
 
 <!-- end of Modal User -->
 
+      
+      <div id="map" style="width: 100%; height: 100%"></div>
 
       <div id="activity-container"> </div>
-
+      <script  src="./config.js"></script>
+      <script  src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <div id="floating-panel">
+        <input id="name" type="textbox" placeholder="name" />
+        <input
+          id="address"
+          type="textbox"
+          placeholder="Enter a location"
+          value="Seattle, Washington"
+        />
+        <input id="submit" type="button" value="Confirm" />
+      </div>
+      
     </main>
     <script defer type="text/javascript" src="likes.js"></script>
     <script defer type="text/javascript" src="activities.js"></script>
     <script defer type="text/javascript" src="comments.js"></script>
     <script defer type="text/javascript" src="users.js"></script>
-    <script defer type="text/javascript" src="maps.js"></script>
     <script  type="text/javascript" src="index.js"></script>
 
-
+    <script  src="./map.js"></script>
+    
+    
   </body>
 </html>
