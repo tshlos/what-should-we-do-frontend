@@ -2,23 +2,19 @@ const commentsURL = 'http://localhost:3000/api/v1/comments';
 const modal = document.getElementById('myModal');
 const commentInput = modal.querySelector('.comment-value');
 const commentList = document.createElement('ul');
-
 function listComments(cardContainer, activity) {
     const btn = document.createElement('button');
     btn.className = 'infocard';
     btn.textContent = 'Open Card';
     cardContainer.append(btn);
-
     btn.addEventListener('click', function (e) {
         openCard(activity);
     });
 }
-
 function openCard(activity) {
     modal.style.display = 'block';
     const closeModal = modal.querySelector('.close');
     closeModal.onclick = function() {
-        // commentList.innerHTML = '';
         modal.style.display = 'none';
     }
     const name = modal.querySelector('.name');
@@ -30,39 +26,32 @@ function openCard(activity) {
     const address = modal.querySelector('.address');
     address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
     const comments = modal.querySelector('.comments');
-
+    comments.remove();
     createComment(activity);
     displayComments(activity.comments);
 }
-
 function displayComments(comments) {
     commentInput.append(commentList);
-
     comments.forEach(comment => {
-
         const listItem = document.createElement('li');
-        // commentList.id = `comment-${comment.id}`;
-        commentList.id = comment.id;
-
         const span = document.createElement('span');
         span.innerText = comment.content;
         listItem.append(span);
-
         const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-button';
         deleteBtn.dataset.id = comment.id;
-        deleteBtn.innerText = '\u00D7';
-0
+        deleteBtn.innerText = '\uD83D\uDDD1';
+        const updateBtn = document.createElement('button');
+        updateBtn.className = 'update-button';
+        updateBtn.dataset.id = comment.id;
+        updateBtn.innerText = '\u00D7';
         listItem.innerText = comment.content;
-        listItem.append(deleteBtn);
         commentList.append(listItem);
-
-        
-        // commentList.innerHTML += `<li>${comment.content}</li>`;
-        // commentList.innerHTML += `<li>${comment.content} <button class="delete-btn">&times;</button> </li>`;
+        listItem.append(deleteBtn);
+        listItem.append(updateBtn);
+        listenToDeleteBtn(deleteBtn);
     });
 }
-listenToDeleteBtn();
-
 async function sendComment(activityId, content) {
     const newComment = {
         activity_id: activityId,
@@ -76,44 +65,28 @@ async function sendComment(activityId, content) {
         },
         body: JSON.stringify(newComment)
     });
+    return await response.json();
 }
-
-
 function createComment(activity) {
-    // const deleteBtn = document.createElement('button');
-    // deleteBtn.innerText = '\u00D7';
-
     const commentForm = document.querySelector('.comment-form');
-    commentForm.addEventListener('submit', function(e) {
+    commentForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
         const commentValue = e.target["comment-value"].value;
-        commentList.innerHTML += `<li>${commentValue} <button>x</button></li>`;
-
+        const comment = await sendComment(activity.id, commentValue);
+        displayComments([comment]);
         commentForm.comment.value = '';
-        sendComment(activity.id, commentValue);
-    }) 
+        // debugger
+    });
 }
-
-function listenToDeleteBtn() {
-const commentContainer = document.getElementById("myModal")
-commentContainer.addEventListener('click', function(e) {
-    if (e.target === 'BUTTON') {
-        debugger
-        console.log(e);
+function listenToDeleteBtn(deleteBtn) {
+    deleteBtn.addEventListener('click', function(e) {
         const btnID = parseInt(e.target.dataset.id);
         e.target.parentElement.remove();
-        deleteComment(btnID);}
+        fetchToDeleteComment(btnID);
     })
 }
-
-async function deleteComment(btnID) {
+async function fetchToDeleteComment(btnID) {
     return fetch(`${commentsURL}/${btnID}`, {
         method: 'DELETE'
     })
 }
-
-
-
-
-
