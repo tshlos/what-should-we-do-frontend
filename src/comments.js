@@ -26,7 +26,9 @@ function openCard(activity) {
     const address = modal.querySelector('.address');
     address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
     const comments = modal.querySelector('.comments');
-    comments.remove();
+
+    commentList.innerHTML = '';
+    // comments.remove();
     createComment(activity);
     displayComments(activity.comments);
 }
