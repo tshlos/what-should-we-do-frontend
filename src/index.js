@@ -42,17 +42,15 @@ function appendActivities(activity) {
 
   const ul = document.createElement("ul"); // comments
   const heart = document.createElement("span"); // likes
-  const likeText = document.createElement("p"); // likes
+  const likeText = document.createElement("span"); // likes
 
   div.className = `card ${category}`;
   div.id = id;
-  div.style = "overflow:scroll";
   h4.textContent = name;
   h5.textContent = category;
   h6.textContent = `${address}, ${city}, ${state}`;
   p.textContent = description;
   img.src = image;
-  img.style.width = "100%";
   heart.className = "like";
   heart.textContent = unlike;
   likeText.textContent = `${likes} likes`;
@@ -68,7 +66,6 @@ function appendActivities(activity) {
 
 function addToActivityList(category) {
   activityList.push(category);
-  //   categoryList();
 }
 
 function openNav() {

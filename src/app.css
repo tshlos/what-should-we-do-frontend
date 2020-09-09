@@ -22,6 +22,7 @@ body {
 
 #main h1 {
   text-align: center;
+
 }
 
 form {
@@ -37,16 +38,22 @@ input {
   border: grey solid 1px;
   
 }
-  #new-activity-btn {
-    margin: 30px 0 10px  10px;
-      font-size: 15px;
+
+img {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+}
+#new-activity-btn {
+  margin: 30px 0 10px  10px;
+    font-size: 15px;
     cursor: pointer;
     background-color: #1c3b63;
     color: #acdcd4;
     padding: 10px 15px;
     border-radius: 10px;
     border: none;
-  
+    
   }
   .infocard {
     margin: auto;
@@ -59,7 +66,7 @@ input {
     border: none;
     width: 60%;
     
-
+    
   }
   
   #new-activity-btn:hover {
@@ -80,34 +87,42 @@ input {
   height: 25rem;
   display: inline-grid;
   margin: 0.5rem;
-
+  overflow:scroll
+  
 }
-
+.card img{
+  width: 100%;
+}
 .card h4 {
   font-weight: bold;
 }
 .card h5 {
   color: #7c459a;
 }
-.card span {
-  float: left;
-  display: inline-block;
+.card h6 {
+
+}
+.card span.like {
+  font-size: 20px;
   cursor: pointer;
+}
+
+.card span {
+
+
+  display:inline;
+  white-space: nowrap;
+  display:inline-block;
   font-size: 16px;
   font-weight: bold;
   color: #7c459a;
   text-align: left;
 }
 .card p {
-  float: left;
-  display: inline-block;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  color: #7c459a;
-  text-align: left;
-}
+  font-size: 14px;
+  text-align-last: center:
 
+}
 
 .food {
   border: #d7eff8 solid 10px;
@@ -116,11 +131,6 @@ input {
   border: #acdcd4 solid 10px;
 }
 
-img {
-  justify-self: center;
-  height: 12rem;
-  width: auto;
-}
 
 /* The sidebar menu */
 .sidebar {
@@ -158,9 +168,8 @@ img {
   color: #818181;
 }
 
-/* The button used to open the sidebar */
-.openbtn {
 
+.openbtn {
   font-size: 20px;
   cursor: pointer;
   background-color: #1c3b63;
@@ -168,7 +177,6 @@ img {
   padding: 10px 15px;
   border-radius: 10px;
   border: none;
-
 }
 
 .openbtn:hover {
