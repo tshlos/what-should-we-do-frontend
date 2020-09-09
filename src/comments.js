@@ -1,6 +1,7 @@
 const commentsURL = 'http://localhost:3000/api/v1/comments';
 const modal = document.getElementById('myModal');
-const commentInput = modal.querySelector('comment-value');
+const commentInput = modal.querySelector('.comment-value');
+const commentList = document.createElement('ul');
 
 function listComments(cardContainer, activity) {
     const btn = document.createElement('button');
@@ -13,12 +14,12 @@ function listComments(cardContainer, activity) {
     });
 }
 
-
 function openCard(activity) {
-    modal.style.display = "block";
-    const closeModal = modal.querySelector(".close");
+    modal.style.display = 'block';
+    const closeModal = modal.querySelector('.close');
     closeModal.onclick = function() {
-        modal.style.display = "none";
+        // commentList.innerHTML = '';
+        modal.style.display = 'none';
     }
     const name = modal.querySelector('.name');
     name.textContent = activity.name;
@@ -31,13 +32,34 @@ function openCard(activity) {
     const comments = modal.querySelector('.comments');
 
     createComment(activity);
-    displayComments(activity);
+    displayComments(activity.comments);
 }
 
 function displayComments(comments) {
-    return comments.forEach(comment => {
-        const commentList = document.createElement('li');
+    commentInput.append(commentList);
+
+    comments.forEach(comment => {
+
+        const listItem = document.createElement('li');
+        // commentList.id = `comment-${comment.id}`;
+        commentList.id = comment.id;
+
+        const span = document.createElement('span');
+        span.innerText = comment.content;
+        listItem.append(span);
+
         const deleteBtn = document.createElement('button');
+        deleteBtn.dataset.id = comment.id;
+        deleteBtn.innerText = '\u00D7';
+0
+        listItem.innerText = comment.content;
+        listItem.append(deleteBtn);
+        commentList.append(listItem);
+
+        listenToDeleteBtn(deleteBtn);
+
+        // commentList.innerHTML += `<li>${comment.content}</li>`;
+        // commentList.innerHTML += `<li>${comment.content} <button class="delete-btn">&times;</button> </li>`;
     });
 }
 
@@ -56,20 +78,39 @@ async function sendComment(activityId, content) {
     });
 }
 
+
 function createComment(activity) {
+    // const deleteBtn = document.createElement('button');
+    // deleteBtn.innerText = '\u00D7';
 
     const commentForm = document.querySelector('.comment-form');
     commentForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        const commentValue = e.target["comment-value"].value;
-        commentForm.comment.value = '';
         
+        const commentValue = e.target["comment-value"].value;
+        commentList.innerHTML += `<li>${commentValue} <button> x</button></li>`;
+
+        commentForm.comment.value = '';
         sendComment(activity.id, commentValue);
     }) 
 }
 
+function listenToDeleteBtn(deleteBtn) {
 
+    deleteBtn.addEventListener('click', function(e) {
+        console.log(e);
+
+        const btnID = parseInt(e.target.dataset.id);
+        e.target.parentElement.remove();
+        deleteComment(btnID);
+    })
+}
+
+async function deleteComment(btnID) {
+    return fetch(`${commentsURL}/${btnID}`, {
+        method: 'DELETE'
+    })
+}
 
 
 
