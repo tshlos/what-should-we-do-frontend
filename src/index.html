@@ -16,11 +16,17 @@
 <nav> 
   <button id="signup">Signup</button>
   <form id="login-form">
+  <label>Name</label>
   <input placeholder=" Your name" />
+  <label> Address</label>
   <input placeholder=" Your address" />
+  <label>City</label>
   <input placeholder=" Your city" />
+  <label>State</label>
   <input placeholder=" Your state" />
+  <label>Zip Code</label>
   <input placeholder=" Your zip code" />
+  <label>Image</label>
   <input placeholder="image url" />
 
   <button class="user-btn">Signup</button>
@@ -32,7 +38,7 @@
         
         <form id="new-Activity-Form">
           <input placeholder="Activity Name" />
-          <input placeholder="Adress" />
+          <input placeholder="Address" />
           <input placeholder="City" />
           <input placeholder="State" />
           <input placeholder="Zip Code" />
@@ -60,14 +66,12 @@
               
             </select>
           </div>
-          
-          
-          
-          <!-- The Modal -->
-          <div id="myModal" class="modal">
-            
-            <!-- Modal content -->
-            <div class="modal-content">
+    
+      <!-- The Modal activity card -->
+      <div id="myModal" class="modal">
+        <!-- Modal content  -->
+        <div class="modal-content">
+
           <span class="close">&times;</span>
           <div class="text-center">  
             <h3 class="name"> </h3>
@@ -87,8 +91,43 @@
         </div>
         
       </div>
+
+      
+      <!-- end of Modal ACtivity -->
+
+<!-- The Modal user -->
+<div id="userModal" class="userModal">
+  <!-- Modal content  -->
+  <div class="userModal-content">
+    <span class="close">&times;</span>
+  <form id="update-User-Form">
+    <label>Name</label>
+    <input class="username"/>
+    <label>Address</label>
+    <input class="useraddress" />
+    <label>City</label>
+    <input class="usercity" />
+    <label>State </label>
+    <input class="userstate" />
+    <label>Zip Code</label>
+    <input class="userzipcode" />
+    <label>Image</label>
+    <input class="userimage" />
+    <button id="update-user-btn">Update My Profile</button>
+  </form>
+  <button id="delete-user-btn">Delete My Profile</button>
+          <!-- <button class="delete-btn">&times;</button> -->
+
+  </div>
+
+</div>
+
+
+<!-- end of Modal User -->
+
       
       <div id="map" style="width: 100%; height: 100%"></div>
+
       <div id="activity-container"> </div>
       <script  src="./config.js"></script>
       <script  src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

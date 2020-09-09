@@ -52,7 +52,7 @@ img {
   height: 12rem;
   width: auto;
 }
-#new-activity-btn {
+#new-activity-btn, #update-user-btn #delete-user-btn{
   margin: 30px 0 10px  10px;
     font-size: 15px;
     cursor: pointer;
@@ -237,8 +237,8 @@ body {
 
 
 /* The Modal (background) */
-.modal {
-  /* display: none; Hidden by default */
+.modal, .userModal {
+  display: none; /*Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -252,7 +252,7 @@ body {
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content, .userModal-content {
   background-color: #acdcd4;
   margin: auto;
   padding: 20px;
