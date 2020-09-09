@@ -1,5 +1,19 @@
+const MapsKey = config.GOOGLE_API_KEY;
+console.log(MapsKey);
+
 const activitiesURL = "http://localhost:3000/api/v1/activities";
 const myLatLng = { lat: 47.6205, lng: -122.3493 };
+loadApiSource();
+
+// load the Google Maps API
+function loadApiSource() {
+  const headElement = document.querySelector("head");
+  const scriptTag = document.createElement("script");
+  // keeps API out of git via interprolation
+  scriptTag.src = `https://maps.googleapis.com/maps/api/js?key=${MapsKey}&callback=initMap`;
+  headElement.append(scriptTag);
+}
+
 let map;
 fetchActivities();
 // const icons = {
