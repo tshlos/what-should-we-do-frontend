@@ -2,12 +2,13 @@ const usersURL = "http://localhost:3000/api/v1/users";
 const userModal = document.getElementById("userModal");
 const closeModal = userModal.querySelector(".close");
 const loginForm = document.getElementById("login-form");
+const signupBtn = document.getElementById("signup");
+const deleteBtn = document.getElementById("delete-user-btn");
 
 listenToLoginForm();
 signUP();
 
 function signUP() {
-  const signupBtn = document.getElementById("signup");
   signupBtn.addEventListener("click", function (event) {
     loginForm.style.display = "block";
     signupBtn.style.display = "none";
@@ -110,6 +111,7 @@ function openUserCard(user) {
   image.placeholder = user.image;
 
   listentoUserUpdate();
+  listentoUserDelete();
 }
 
 function listentoUserUpdate() {
@@ -140,6 +142,26 @@ async function updateUser(Userinfo, userID) {
     userModal.style.display = "none";
   }
 }
+function listentoUserDelete() {
+  deleteBtn.addEventListener("click", function (event) {
+    const userID = +event.target.parentElement.parentElement.dataset.id;
+    deleteUser(userID);
+  });
+}
+
+async function deleteUser(userID) {
+  const response = await fetch(`${usersURL}/${userID}`, { method: "DELETE" });
+  resetAfterDeleteUser();
+}
+
+function resetAfterDeleteUser() {
+  const button = document.querySelector(".profile-btn");
+  button.style.display = "none";
+  signupBtn.style.display = "block";
+  userModal.style.display = "none";
+  loginForm.reset();
+}
+
 // function createLoginForm() {
 //   const nameInputTag = document.createElement("input");
 //   const addressInputTag = document.createElement("input");
