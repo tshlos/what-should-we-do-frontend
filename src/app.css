@@ -22,9 +22,11 @@ body {
 
 #main h1 {
   text-align: center;
-
+  
 }
-
+#login-form {
+  display: none;
+}
 form {
   width: 100%;
   font-size: 18px;
@@ -266,16 +268,15 @@ body {
   cursor: pointer;
 }
 
-/* #login-btn {
+.user-btn {
   position: relative;
-  background-color: #011110;
   border: none;
   border-radius: 5px;
   width: max-content;
-  color: whitesmoke;
   font-size: 16px;
   justify-self: center;
-} */
+}
+
 
 
   /* When you mouse over the navigation links, change their color */
