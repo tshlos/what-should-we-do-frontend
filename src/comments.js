@@ -2,16 +2,44 @@ const commentsURL = 'http://localhost:3000/api/v1/comments';
 const modal = document.getElementById('myModal');
 const commentInput = modal.querySelector('.comment-value');
 const commentList = document.createElement('ul');
+
 function listComments(cardContainer, activity) {
     const btn = document.createElement('button');
     btn.className = 'infocard';
     btn.textContent = 'Open Card';
     cardContainer.append(btn);
     btn.addEventListener('click', function (e) {
-        openCard(activity);
+        
+        // debugger
+        const foundActivity = allActivities.find(a => a.id === activity.id);
+        openCard(foundActivity);
+    });
+    // createComment(activity);
+}
+
+
+function createComment(activity) {
+    const commentForm = document.querySelector('.comment-form');
+    commentForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const commentValue = e.target["comment-value"].value;
+        const comment = await sendComment(activity.id, commentValue);
+        displayComments([comment]);
+        commentForm.comment.value = '';
+        // debugger
+        // console.log(allActivities)
+
+        allActivities.map(activity => {
+            activity.comments
+        })
+        activity.push(comment)
+
+        debugger
     });
 }
+
 function openCard(activity) {
+    
     modal.style.display = 'block';
     const closeModal = modal.querySelector('.close');
     closeModal.onclick = function() {
@@ -26,10 +54,13 @@ function openCard(activity) {
     const address = modal.querySelector('.address');
     address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
     const comments = modal.querySelector('.comments');
-    comments.remove();
+
+    commentList.innerHTML = '';
+    // comments.remove();
     createComment(activity);
     displayComments(activity.comments);
 }
+
 function displayComments(comments) {
     commentInput.append(commentList);
     comments.forEach(comment => {
@@ -49,9 +80,12 @@ function displayComments(comments) {
         commentList.append(listItem);
         listItem.append(deleteBtn);
         listItem.append(updateBtn);
+
         listenToDeleteBtn(deleteBtn);
+        // listenToUpdateComment(updateBtn);
     });
 }
+
 async function sendComment(activityId, content) {
     const newComment = {
         activity_id: activityId,
@@ -67,17 +101,7 @@ async function sendComment(activityId, content) {
     });
     return await response.json();
 }
-function createComment(activity) {
-    const commentForm = document.querySelector('.comment-form');
-    commentForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const commentValue = e.target["comment-value"].value;
-        const comment = await sendComment(activity.id, commentValue);
-        displayComments([comment]);
-        commentForm.comment.value = '';
-        // debugger
-    });
-}
+
 function listenToDeleteBtn(deleteBtn) {
     deleteBtn.addEventListener('click', function(e) {
         const btnID = parseInt(e.target.dataset.id);
@@ -90,3 +114,31 @@ async function fetchToDeleteComment(btnID) {
         method: 'DELETE'
     })
 }
+
+
+
+// function listenToUpdateComment(updateBtn) {
+    
+//     updateBtn.addEventListener('click', function (e) {
+
+//         const commentID = e.target.dataset.id;
+
+        
+
+
+//         debugger
+//     })
+// }
+
+
+// async function fetchToUpdateComment(/*commentID, newCommentInput*/) {
+//     const response = await fetch(`${commentsURL}/${activityID}`, {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json'
+//         },
+//         body: JSON.stringify({comment: newComment})
+//     });
+//     return await response.json();
+// }
