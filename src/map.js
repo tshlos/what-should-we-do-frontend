@@ -50,17 +50,17 @@ function geocodeAddress(geocoder, resultsMap) {
 //     );
 // }
 
-
 function addMarkers(activity) {
-  const iconBase = `assets/icons/`;
-  const image = 
+  const iconBase = `icons/`;
+  const image = `${iconBase}${activity.category}-icon.png`;
   debugger;
   let marker = new google.maps.Marker({
     map: map,
     draggable: false,
     animation: google.maps.Animation.Drop,
     position: { lat: activity.latitude, lng: activity.longitude },
-    icon: `${iconBase}${activity.category}-icon.png`,
+    icon:
+      "https://www.iconfinder.com/data/icons/iconic-1/32/map_pin_fill-512.png",
     title: activity.name,
   });
 }
