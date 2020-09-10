@@ -4,8 +4,8 @@ const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
 let activityList = [];
-fetchActivities();
 
+fetchActivities();
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
   const activities = await response.json();

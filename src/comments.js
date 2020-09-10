@@ -2,11 +2,12 @@ const commentsURL = "http://localhost:3000/api/v1/comments";
 const modal = document.getElementById("myModal");
 const commentContainer = modal.querySelector(".comment-value");
 const commentList = modal.querySelector(".comment-list");
+const commentForm = document.querySelector(".comment-form");
 
 function createOpenCard(cardContainer, activity) {
   const btn = document.createElement("button");
   btn.className = "infocard";
-  btn.textContent = "Open Card";
+  btn.textContent = "Info";
   cardContainer.append(btn);
   btn.addEventListener("click", function (e) {
     openModal(activity);
@@ -19,7 +20,13 @@ function openModal(activity) {
   const closeModal = modal.querySelector(".close");
   closeModal.onclick = function () {
     modal.style.display = "none";
+    // const clearList = commentList.children;
+    // for (let i = 0; i < clearList.length; i++) {
+    //   clearList[i].remove();
+    //   debugger;
+    // }
   };
+
   addInfoToModal(activity);
   displayComments(activity.comments);
 }
@@ -40,7 +47,6 @@ function addInfoToModal(activity) {
 }
 
 function listenToCreateCommentForm(activity) {
-  const commentForm = document.querySelector(".comment-form");
   commentForm.onsubmit = async function (e) {
     e.preventDefault();
     const commentValue = e.target["comment-value"].value; //value of the last comment entered
@@ -53,7 +59,12 @@ function listenToCreateCommentForm(activity) {
 
 function displayComments(comments) {
   comments.forEach((comment) => {
+    //   const commentsToActivity= [];
+    //   commentsToActivity.push(comment.content);
+
+    // debugger;
     const listItem = document.createElement("li");
+    const span = document.createElement("span");
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-button";
     deleteBtn.dataset.id = comment.id;
@@ -61,12 +72,17 @@ function displayComments(comments) {
     const updateBtn = document.createElement("button");
     updateBtn.className = "update-button";
     updateBtn.dataset.id = comment.id;
-    updateBtn.innerText = "\u00D7";
-    listItem.innerText = comment.content;
+    updateBtn.innerText = "\u270E";
+    span.innerText = comment.content;
     commentList.append(listItem);
     listItem.append(deleteBtn);
     listItem.append(updateBtn);
+    listItem.append(span);
     listenToDeleteBtn(deleteBtn);
+    listenToUpdateComment(updateBtn);
+
+    // return commentsToActivity
+    // commentList.children.remove();
   });
 }
 
@@ -97,4 +113,47 @@ async function fetchToDeleteComment(btnID) {
   return fetch(`${commentsURL}/${btnID}`, {
     method: "DELETE",
   });
+}
+
+function listenToUpdateComment(updateBtn) {
+  updateBtn.addEventListener("click", function (e) {
+    // debugger;
+    const commentID = e.target.dataset.id;
+    const oldComment = e.target.nextElementSibling.textContent;
+    const li = e.target.parentElement;
+    const inputField = document.createElement("input");
+    inputField.placeholder = oldComment;
+    const updateBtn = document.createElement("button");
+    updateBtn.className = "button-to-update";
+    updateBtn.innerText = "update";
+    li.append(inputField, updateBtn);
+    e.target.parentElement.firstChild.remove();
+    e.target.nextSibling.previousSibling.remove();
+    UpdateComment(commentID, li);
+  });
+}
+function UpdateComment(commentID, li) {
+  const list = document.querySelector("ul");
+  list.addEventListener("click", async function (e) {
+    e.preventDefault();
+    if (e.target.className === "button-to-update") {
+      //   debugger;
+      const commentValue = e.target.previousElementSibling.value;
+      const comment = await fetchPatchComment(commentID, commentValue);
+      li.remove();
+      displayComments([comment]);
+    }
+  });
+}
+
+async function fetchPatchComment(commentID, commentValue) {
+  const response = await fetch(`${commentsURL}/${commentID}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ content: commentValue }),
+  });
+  return await response.json();
 }

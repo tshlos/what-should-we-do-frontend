@@ -1,6 +1,10 @@
+/* .delete-button {
+  padding: 0;
+  border: none;
+  background: none;
+} */
 
-
-.delete-button {
+.delete-button, .update-button{
   padding: 0;
   border: none;
   background: none;
@@ -297,6 +301,9 @@ body {
   width: 50.00%;
 }
 
+.comment-list {
+  list-style-type:none;
+}
 
   /* When you mouse over the navigation links, change their color */
   /* .sidebar a:hover {
