@@ -128,3 +128,12 @@ function createNewActivity() {
     formFiled[7].value = "";
   });
 }
+
+listenforCardClickForMarkerPan();
+
+function listenforCardClickForMarkerPan() {
+  activitiesContainer.addEventListener("click", function () {
+    console.log(event.target.parentElement.id);
+    debugger;
+  });
+}
