@@ -2,7 +2,6 @@ const MapsKey = config.GOOGLE_API_KEY;
 loadApiSource();
 const myLatLng = { lat: 47.6205, lng: -122.3493 };
 let map;
-
 // load the Google Maps API
 function loadApiSource() {
   const headElement = document.querySelector("head");
@@ -13,11 +12,9 @@ function loadApiSource() {
 }
 initMap();
 // fetchActivitiesForMarkers();
-
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 15,
-
     center: myLatLng,
   });
   const geocoder = new google.maps.Geocoder();
@@ -25,7 +22,6 @@ function initMap() {
     geocodeAddress(geocoder, map);
   });
 }
-
 function geocodeAddress(geocoder, resultsMap) {
   const address = document.getElementById("address").value;
   geocoder.geocode({ address: address }, (results, status) => {
@@ -42,7 +38,6 @@ function geocodeAddress(geocoder, resultsMap) {
     }
   });
 }
-
 // function fetchActivitiesForMarkers() {
 //   fetch(activitiesURL)
 //     .then((response) => response.json())
@@ -50,7 +45,6 @@ function geocodeAddress(geocoder, resultsMap) {
 //       activities.forEach((activity) => addMarkers(activity))
 //     );
 // }
-
 function addMarkers(activity) {
   const iconBase = `icons/`;
   const image = `${iconBase}${activity.category}-icon.png`;
@@ -79,5 +73,6 @@ function listenforMarkerClick() {
 
 // function panMarker(event) {
 //   debugger;
+
 //   console.log(event);
 // }
