@@ -1,5 +1,6 @@
 function appendCategory(item) {
   let options = document.getElementById(item);
+  // add clear item from empty spaces return string.replace(/[^A-Za-z0-9-']+/g, '');
   if (options === null) {
     const dropdown = document.querySelector(".dropdown");
     const option = document.createElement("option");
@@ -15,9 +16,6 @@ function sortByCategory() {
   dropdown.addEventListener("input", function (event) {
     const category = event.target.value;
     const activities = Array.from(document.querySelectorAll(`.card`));
-    // for (activity of activities) {
-    //   activity.style.display = "inline-grid";
-    // }
 
     for (activity of activities) {
       if (category === "show all") {
@@ -32,8 +30,5 @@ function sortByCategory() {
     }
   });
 }
-
-// inline-grid
-// none
 
 sortByCategory();
