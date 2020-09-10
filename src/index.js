@@ -136,6 +136,14 @@ function createNewActivity() {
   });
 }
 
+listenforCardClickForMarkerPan();
+
+function listenforCardClickForMarkerPan() {
+  activitiesContainer.addEventListener("click", function () {
+    console.log(event.target.parentElement.id);
+    debugger;
+  });
+}
 // function createNewActivity() {
 //     const form = document.createElement("form");
 //     const inputName = document.createElement("input");
