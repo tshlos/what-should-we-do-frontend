@@ -50,12 +50,17 @@ function geocodeAddress(geocoder, resultsMap) {
 //     );
 // }
 
+
 function addMarkers(activity) {
+  const iconBase = `assets/icons/`;
+  const image = 
+  debugger;
   let marker = new google.maps.Marker({
     map: map,
     draggable: false,
     animation: google.maps.Animation.Drop,
     position: { lat: activity.latitude, lng: activity.longitude },
+    icon: `${iconBase}${activity.category}-icon.png`,
     title: activity.name,
   });
 }
