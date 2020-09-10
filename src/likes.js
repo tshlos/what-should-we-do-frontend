@@ -6,7 +6,7 @@ function addLikeToActivity() {
     let likeBtn = event.target;
     const activityID = event.target.parentElement.id;
     const likeText = likeBtn.nextElementSibling;
-    let likeNumber = parseInt(likeText.textContent);
+    // let likeNumber = parseInt(likeText.textContent);
 
     if (likeBtn.className === "like") {
       if (likeBtn.textContent === like) {

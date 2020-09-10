@@ -1,22 +1,30 @@
 const commentsURL = 'http://localhost:3000/api/v1/comments';
 const modal = document.getElementById('myModal');
-const commentInput = modal.querySelector('.comment-value');
-const commentList = document.createElement('ul');
-function listComments(cardContainer, activity) {
+const commentContainer = modal.querySelector('.comment-value');
+const commentList = modal.querySelector('.comment-list');
+
+function createOpenCard(cardContainer, activity) {
     const btn = document.createElement('button');
     btn.className = 'infocard';
     btn.textContent = 'Open Card';
     cardContainer.append(btn);
     btn.addEventListener('click', function (e) {
-        openCard(activity);
+        openModal(activity);
     });
 }
-function openCard(activity) {
+
+function openModal(activity) {
+    // commentList.append(activity.comment);
     modal.style.display = 'block';
     const closeModal = modal.querySelector('.close');
     closeModal.onclick = function() {
         modal.style.display = 'none';
     }
+    addInfoToModal(activity);
+    displayComments(activity.comments)
+}
+
+function addInfoToModal(activity) {
     const name = modal.querySelector('.name');
     name.textContent = activity.name;
     const category = modal.querySelector('.category');
@@ -25,18 +33,27 @@ function openCard(activity) {
     image.src = activity.image;
     const address = modal.querySelector('.address');
     address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
-    const comments = modal.querySelector('.comments');
-    comments.remove();
-    createComment(activity);
-    displayComments(activity.comments);
+    //const comments = modal.querySelector('.comments');
+    commentList.innerHTML = '';
+
+    listenToCreateCommentForm(activity);
 }
+
+function listenToCreateCommentForm(activity) {
+    const commentForm = document.querySelector('.comment-form');
+    commentForm.onsubmit = async function(e) {
+        e.preventDefault();
+        const commentValue = e.target["comment-value"].value; //value of the last comment entered
+        const comment = await fetchComment(activity.id, commentValue); //a comment obj 
+        displayComments([comment]);
+        commentForm.comment.value = '';
+        activity.comments.push(comment);
+    };
+}
+
 function displayComments(comments) {
-    commentInput.append(commentList);
     comments.forEach(comment => {
         const listItem = document.createElement('li');
-        const span = document.createElement('span');
-        span.innerText = comment.content;
-        listItem.append(span);
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-button';
         deleteBtn.dataset.id = comment.id;
@@ -50,9 +67,10 @@ function displayComments(comments) {
         listItem.append(deleteBtn);
         listItem.append(updateBtn);
         listenToDeleteBtn(deleteBtn);
-    });
+    })
 }
-async function sendComment(activityId, content) {
+
+async function fetchComment(activityId, content) {
     const newComment = {
         activity_id: activityId,
         content: content
@@ -67,17 +85,7 @@ async function sendComment(activityId, content) {
     });
     return await response.json();
 }
-function createComment(activity) {
-    const commentForm = document.querySelector('.comment-form');
-    commentForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const commentValue = e.target["comment-value"].value;
-        const comment = await sendComment(activity.id, commentValue);
-        displayComments([comment]);
-        commentForm.comment.value = '';
-        // debugger
-    });
-}
+
 function listenToDeleteBtn(deleteBtn) {
     deleteBtn.addEventListener('click', function(e) {
         const btnID = parseInt(e.target.dataset.id);
