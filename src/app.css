@@ -1,4 +1,5 @@
 
+
 .delete-button {
   padding: 0;
   border: none;
@@ -52,7 +53,7 @@ img {
   height: 12rem;
   width: auto;
 }
-#new-activity-btn {
+#new-activity-btn, #update-user-btn #delete-user-btn{
   margin: 30px 0 10px  10px;
     font-size: 15px;
     cursor: pointer;
@@ -209,8 +210,9 @@ img {
   position: absolute;
   top: 0;
   bottom: 0;
-  height: 200 px;
-  width: 100 px;
+  right:0;
+  height: 100%;
+  width: 50%;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -225,6 +227,7 @@ body {
   position: absolute;
   top: 100px;
   left: 25%;
+  right: 0
   z-index: 5;
   background-color: #fff;
   padding: 5px;
@@ -237,8 +240,8 @@ body {
 
 
 /* The Modal (background) */
-.modal {
-  /* display: none; Hidden by default */
+.modal, .userModal {
+  display: none; /*Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -252,7 +255,7 @@ body {
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content, .userModal-content {
   background-color: #acdcd4;
   margin: auto;
   padding: 20px;
@@ -285,9 +288,19 @@ body {
   justify-self: center;
 }
 
+.column-left {
+  float: left;
+  width: 50.00%;
+}
+.column-right {
+  float: right;
+  width: 50.00%;
+}
 
 
   /* When you mouse over the navigation links, change their color */
   /* .sidebar a:hover {
     color: #f1f1f1;
   } */
+
+  

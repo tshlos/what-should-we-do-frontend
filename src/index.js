@@ -57,6 +57,8 @@ function appendActivities(activity) {
   createOpenCard(div, activity);
   addToActivityList(activity.category);
   appendCategory(activity.category);
+  addMarkers(activity);
+
   closeNav();
 }
 
@@ -117,8 +119,7 @@ function createNewActivity() {
 
     fetch(activitiesURL, options)
       .then((response) => response.json())
-      .then((activity) => addMarkers(activity));
-    // .then((activity) => appendActivities(activity));
+      .then((activity) => appendActivities(activity));
 
     formFiled[0].value = " ";
     formFiled[1].value = " ";
