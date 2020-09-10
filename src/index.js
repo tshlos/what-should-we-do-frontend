@@ -1,19 +1,14 @@
 const activitiesURL = "http://localhost:3000/api/v1/activities";
-
 const activitiesContainer = document.getElementById("activity-container");
-
 const mySidebar = document.getElementById("mySidebar");
-
 const unlike = "♡";
 const like = "♥";
-let allActivities = [];
 let activityList = [];
 fetchActivities();
 
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
   const activities = await response.json();
-  allActivities = activities;
 
   activities.forEach((activity) => {
     appendActivities(activity);
@@ -59,7 +54,7 @@ function appendActivities(activity) {
   div.append(heart, likeText, h4, h5, img, h6, p);
   activitiesContainer.appendChild(div);
 
-  listComments(div, activity);
+  createOpenCard(div, activity);
   addToActivityList(activity.category);
   appendCategory(activity.category);
   closeNav();
