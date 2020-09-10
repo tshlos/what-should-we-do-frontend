@@ -29,6 +29,7 @@ function geocodeAddress(geocoder, resultsMap) {
       resultsMap.setCenter(results[0].geometry.location);
       new google.maps.Marker({
         map: resultsMap,
+        icon: `icons/person-icon.png`,
         position: results[0].geometry.location,
         animation: google.maps.Animation.Drop,
       });
@@ -45,17 +46,33 @@ function geocodeAddress(geocoder, resultsMap) {
 //     );
 // }
 function addMarkers(activity) {
-  let marker = new google.maps.Marker({
+  const iconBase = `icons/`;
+  const image = `${iconBase}${activity.category}-icon.png`;
+  var marker = new google.maps.Marker({
     map: map,
     draggable: false,
     animation: google.maps.Animation.Drop,
     position: { lat: activity.latitude, lng: activity.longitude },
+    icon: image,
     title: activity.name,
+    id: activity.id,
+  });
+
+  marker.addListener("click", function () {
+    map.setZoom(15);
+    map.panTo(marker.getPosition());
   });
 }
-// function recenterMap() {
-//   activitiesContainer.addEventListener("click", moveMarker(event));
-// }
-// function moveMarker(event) {
+
+function listenforMarkerClick() {
+  marker.addListener("click", function () {
+    map.setZoom(15);
+    map.panTo(marker.getPosition());
+  });
+}
+
+// function panMarker(event) {
+//   debugger;
+
 //   console.log(event);
 // }
