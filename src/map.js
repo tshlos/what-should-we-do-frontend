@@ -1,7 +1,6 @@
 const MapsKey = config.GOOGLE_API_KEY;
 loadApiSource();
 const myLatLng = { lat: 47.6205, lng: -122.3493 };
-let map;
 
 // load the Google Maps API
 function loadApiSource() {
@@ -15,7 +14,7 @@ initMap();
 // fetchActivitiesForMarkers();
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
+  let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 15,
 
     center: myLatLng,
@@ -51,7 +50,6 @@ function geocodeAddress(geocoder, resultsMap) {
 // }
 
 function addMarkers(activity) {
-  debugger;
   let marker = new google.maps.Marker({
     map: map,
     draggable: false,
@@ -61,10 +59,10 @@ function addMarkers(activity) {
   });
 }
 
-// function recenterMap() {
-//   activitiesContainer.addEventListener("click", moveMarker(event));
-// }
+function recenterMap() {
+  activitiesContainer.addEventListener("click", moveMarker(event));
+}
 
-// function moveMarker(event) {
-//   console.log(event);
-// }
+function moveMarker(event) {
+  console.log(event);
+}
