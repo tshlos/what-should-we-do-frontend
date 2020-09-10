@@ -9,22 +9,29 @@ function createOpenCard(cardContainer, activity) {
   btn.className = "infocard";
   btn.textContent = "Info";
   cardContainer.append(btn);
-  btn.addEventListener("click", function (e) {
-    openModal(activity);
+}
+
+listenToInfoButton();
+function listenToInfoButton() {
+  activitiesContainer.addEventListener("click", function (e) {
+    if (e.target.className === "infocard") {
+      const id = e.target.parentElement.id;
+      fetchActivity(id);
+    }
   });
 }
 
+async function fetchActivity(id) {
+  const response = await fetch(`${activitiesURL}/${id}`);
+  const activity = await response.json();
+  openModal(activity);
+}
+
 function openModal(activity) {
-  // commentList.append(activity.comment);
   modal.style.display = "block";
   const closeModal = modal.querySelector(".close");
   closeModal.onclick = function () {
     modal.style.display = "none";
-    // const clearList = commentList.children;
-    // for (let i = 0; i < clearList.length; i++) {
-    //   clearList[i].remove();
-    //   debugger;
-    // }
   };
 
   addInfoToModal(activity);
@@ -40,8 +47,6 @@ function addInfoToModal(activity) {
   image.src = activity.image;
   const address = modal.querySelector(".address");
   address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
-  //const comments = modal.querySelector('.comments');
-  commentList.innerHTML = "";
 
   listenToCreateCommentForm(activity);
 }
@@ -49,20 +54,17 @@ function addInfoToModal(activity) {
 function listenToCreateCommentForm(activity) {
   commentForm.onsubmit = async function (e) {
     e.preventDefault();
-    const commentValue = e.target["comment-value"].value; //value of the last comment entered
-    const comment = await fetchComment(activity.id, commentValue); //a comment obj
-    displayComments([comment]);
+    const commentValue = e.target["comment-value"].value;
+    const comment = await fetchComment(activity.id, commentValue);
+    displayComments(comment);
     commentForm.comment.value = "";
     activity.comments.push(comment);
   };
 }
 
 function displayComments(comments) {
+  commentList.innerHTML = "";
   comments.forEach((comment) => {
-    //   const commentsToActivity= [];
-    //   commentsToActivity.push(comment.content);
-
-    // debugger;
     const listItem = document.createElement("li");
     const span = document.createElement("span");
     const deleteBtn = document.createElement("button");
@@ -80,9 +82,6 @@ function displayComments(comments) {
     listItem.append(span);
     listenToDeleteBtn(deleteBtn);
     listenToUpdateComment(updateBtn);
-
-    // return commentsToActivity
-    // commentList.children.remove();
   });
 }
 
@@ -117,33 +116,31 @@ async function fetchToDeleteComment(btnID) {
 
 function listenToUpdateComment(updateBtn) {
   updateBtn.addEventListener("click", function (e) {
-    // debugger;
     const commentID = e.target.dataset.id;
-    const oldComment = e.target.nextElementSibling.textContent;
+    const comment = e.target.nextElementSibling;
     const li = e.target.parentElement;
     const inputField = document.createElement("input");
-    inputField.placeholder = oldComment;
+    inputField.placeholder = comment.textContent;
     const updateBtn = document.createElement("button");
     updateBtn.className = "button-to-update";
     updateBtn.innerText = "update";
     li.append(inputField, updateBtn);
-    e.target.parentElement.firstChild.remove();
-    e.target.nextSibling.previousSibling.remove();
-    UpdateComment(commentID, li);
+    UpdateComment(commentID, comment);
   });
 }
-function UpdateComment(commentID, li) {
+function UpdateComment(commentID, comment) {
   const list = document.querySelector("ul");
-  list.addEventListener("click", async function (e) {
+  list.onclick = async function (e) {
     e.preventDefault();
     if (e.target.className === "button-to-update") {
-      //   debugger;
       const commentValue = e.target.previousElementSibling.value;
-      const comment = await fetchPatchComment(commentID, commentValue);
-      li.remove();
-      displayComments([comment]);
+      const updatedComment = await fetchPatchComment(commentID, commentValue);
+      console.log(updatedComment);
+      comment.textContent = updatedComment.content;
+      e.target.previousElementSibling.remove();
+      e.target.remove();
     }
-  });
+  };
 }
 
 async function fetchPatchComment(commentID, commentValue) {
