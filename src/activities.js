@@ -1,6 +1,6 @@
 function appendCategory(item) {
   let options = document.getElementById(item);
-  // add clear item from empty spaces return string.replace(/[^A-Za-z0-9-']+/g, '');
+  item = item.replace(/[^A-Za-z0-9-']+/g, "");
   if (options === null) {
     const dropdown = document.querySelector(".dropdown");
     const option = document.createElement("option");

@@ -3,7 +3,7 @@ const activitiesContainer = document.getElementById("activity-container");
 const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
-let activityList = [];
+// let activityList = [];
 
 fetchActivities();
 async function fetchActivities() {
@@ -52,16 +52,16 @@ function appendActivities(activity) {
   activitiesContainer.appendChild(div);
 
   createOpenCard(div, activity);
-  addToActivityList(activity.category);
+  // addToActivityList(activity.category);
   appendCategory(activity.category);
   addMarkers(activity);
 
   closeNav();
 }
 
-function addToActivityList(category) {
-  activityList.push(category);
-}
+// function addToActivityList(category) {
+//   activityList.push(category);
+// }
 
 function openNav() {
   mySidebar.style.width = "25%";
