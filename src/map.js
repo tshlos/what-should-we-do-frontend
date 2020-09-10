@@ -51,7 +51,6 @@ function geocodeAddress(geocoder, resultsMap) {
 // }
 
 function addMarkers(activity) {
-  debugger;
   let marker = new google.maps.Marker({
     map: map,
     draggable: false,
