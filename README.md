@@ -24,6 +24,7 @@ Users can:
 - Click and view more information about an activity
 
 - Leave comments about an activity
+
 ![comment functionality](https://media.giphy.com/media/SYL0VZCG8hAn7t1Uys/giphy.gif)
 
 
