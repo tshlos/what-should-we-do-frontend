@@ -3,7 +3,7 @@ const activitiesContainer = document.getElementById("activity-container");
 const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
-// let activityList = [];
+let activityList = [];
 
 fetchActivities();
 async function fetchActivities() {
@@ -30,8 +30,6 @@ function appendActivities(activity) {
   const div = document.createElement("div");
   const h4 = document.createElement("h4");
   const h5 = document.createElement("h5");
-  // const h6 = document.createElement("h6");
-  // const p = document.createElement("p");
   const img = document.createElement("img");
   const ul = document.createElement("ul");
   const heart = document.createElement("span");
@@ -44,8 +42,6 @@ function appendActivities(activity) {
   div.id = id;
   h4.textContent = name;
   h5.textContent = category;
-  // h6.textContent = `${address}, ${city}, ${state}`;
-  // p.textContent = description;
   img.src = image;
   heart.className = "like";
   heart.textContent = unlike;
@@ -54,8 +50,6 @@ function appendActivities(activity) {
   div.append(heart, likeText, h4, btn, h5, img);
   activitiesContainer.appendChild(div);
 
-
-  createOpenCard(div, activity);
   addToActivityList(activity);
   appendCategory(activity.category);
   addMarkers(activity);
@@ -64,13 +58,11 @@ function appendActivities(activity) {
 }
 addToActivityList();
 
-
 function addToActivityList(activity) {
   if (activity != undefined) {
     activityList.push(activity);
   }
 }
-
 
 function openNav() {
   mySidebar.style.width = "25%";
@@ -150,8 +142,5 @@ function listenforCardClickForMarkerPan() {
     );
     let latLng = `${foundActivity.latitude},${foundActivity.longitude}`;
     map.panTo(newLatLng);
-
   });
 }
-
-// activity.list;
