@@ -4,12 +4,12 @@ const commentContainer = modal.querySelector(".comment-value");
 const commentList = modal.querySelector(".comment-list");
 const commentForm = document.querySelector(".comment-form");
 
-// function createOpenCard(cardContainer, activity) {
-//   const btn = document.createElement("button");
-//   btn.className = "infocard";
-//   btn.textContent = "Info";
-//   cardContainer.append(btn);
-// }
+function createOpenCard(cardContainer, activity) {
+  const btn = document.createElement("button");
+  btn.className = "infocard";
+  btn.textContent = "Info";
+  cardContainer.append(btn);
+}
 
 listenToInfoButton();
 function listenToInfoButton() {
@@ -36,13 +36,18 @@ function openModal(activity) {
 
   addInfoToModal(activity);
   displayComments(activity.comments);
+  const modalContainer = document.querySelector(".modal-content");
+  window.onclick = function (event) {
+    // debugger;
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 }
 
 function addInfoToModal(activity) {
   const name = modal.querySelector(".name");
   name.textContent = activity.name;
-  const description = modal.querySelector(".description");
-  description.textContent = activity.description;
   const category = modal.querySelector(".category");
   category.textContent = activity.category;
   const image = modal.querySelector(".image");
