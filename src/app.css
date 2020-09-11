@@ -1,4 +1,8 @@
-
+.update-button {
+  padding: 0;
+  border: none;
+  background: none;
+}
 
 .delete-button {
   padding: 0;
@@ -208,7 +212,7 @@ img {
 * element that contains the map. */
 #map {
   position: absolute;
-  top: 0;
+  top: 10%;
   bottom: 0;
   right:0;
   height: 100%;
@@ -297,6 +301,11 @@ body {
   width: 50.00%;
 }
 
+nav {
+  background: black;
+  height: 100px;
+  width: 1000%;
+}
 
   /* When you mouse over the navigation links, change their color */
   /* .sidebar a:hover {

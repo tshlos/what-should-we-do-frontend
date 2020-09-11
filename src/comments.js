@@ -61,7 +61,7 @@ function displayComments(comments) {
     const updateBtn = document.createElement("button");
     updateBtn.className = "update-button";
     updateBtn.dataset.id = comment.id;
-    updateBtn.innerText = "\u00D7";
+    updateBtn.innerText = "\u270E";
     listItem.innerText = comment.content;
     commentList.append(listItem);
     listItem.append(deleteBtn);

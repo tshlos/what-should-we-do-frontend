@@ -79,7 +79,7 @@ function closeNav() {
 
 function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
-  form.addEventListener("submit", function (event) {
+  form.onsubmit = function (event) {
     event.preventDefault();
     const formFiled = event.target.children;
 
@@ -137,41 +137,5 @@ listenforCardClickForMarkerPan();
 function listenforCardClickForMarkerPan() {
   activitiesContainer.addEventListener("click", function () {
     console.log(event.target.parentElement.id);
-    debugger;
   });
 }
-// function createNewActivity() {
-//     const form = document.createElement("form");
-//     const inputName = document.createElement("input");
-//     const inputCategory = document.createElement("input");
-//     const inputAdress = document.createElement("input");
-//     const inputCity = document.createElement("input");
-//     const inputState = document.createElement("input");
-//     const inputZip = document.createElement("input");
-//     const inputDescription = document.createElement("input");
-//     const inputImg = document.createElement("input");
-//     const btn = document.createElement("button");
-
-//     inputName.placeholder = "Activity Name";
-//     inputCategory.placeholder = "Category";
-//     inputAdress.placeholder = "Address";
-//     inputCity.placeholder = "City";
-//     inputState.placeholder = "State";
-//     inputZip.placeholder = "Zipcode";
-//     inputDescription.placeholder = "description";
-//     inputDescription.style.height = "200%";
-//     inputImg.placeholder = "Image URL";
-//     btn.textContent = "Add New Activity";
-
-//     form.append(
-//       inputName,
-//       inputCategory,
-//       inputAdress,
-//       inputCity,
-//       inputZip,
-//       inputDescription,
-//       inputImg,
-//       btn
-//     );
-//     mySidebar.append(form);
-//     }
