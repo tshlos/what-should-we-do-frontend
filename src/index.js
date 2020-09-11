@@ -52,15 +52,18 @@ function appendActivities(activity) {
   activitiesContainer.appendChild(div);
 
   createOpenCard(div, activity);
-  addToActivityList(activity.category);
+  addToActivityList(activity);
   appendCategory(activity.category);
   addMarkers(activity);
 
   closeNav();
 }
+addToActivityList();
 
-function addToActivityList(category) {
-  activityList.push(category);
+function addToActivityList(activity) {
+  if (activity != undefined) {
+    activityList.push(activity);
+  }
 }
 
 function openNav() {
@@ -133,7 +136,15 @@ listenforCardClickForMarkerPan();
 
 function listenforCardClickForMarkerPan() {
   activitiesContainer.addEventListener("click", function () {
-    console.log(event.target.parentElement.id);
-    debugger;
+    let cardID = event.target.parentElement.id;
+    let foundActivity = activityList.find((activity) => activity.id == cardID);
+    let newLatLng = new google.maps.LatLng(
+      foundActivity.latitude,
+      foundActivity.longitude
+    );
+    let latLng = `${foundActivity.latitude},${foundActivity.longitude}`;
+    map.panTo(newLatLng);
   });
 }
+
+// activity.list;
