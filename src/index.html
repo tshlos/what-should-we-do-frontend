@@ -13,20 +13,21 @@
   <body>
     <nav>
       <span><button class="openbtn" onclick="openNav()">&#9776; Open Menu</button></span>
-      <span>What Should We Do</span>
-        <span id="floating-panel">
-          <input id="name" type="textbox" placeholder="name" />
-          <input
-            id="address"
-            type="textbox"
-            placeholder="Enter a location"
-            value="Seattle, Washington"
-          />
-          <input id="submit" type="button" value="Take Me There" />
-        </span>
+      <span class= "logo"> What Should We Do</span>
+      
     </nav>
     <main>
-      
+      <span id="floating-panel">
+        <input id="name" type="textbox" placeholder="name" />
+        <input
+          id="address"
+          type="textbox"
+          placeholder="Enter a location"
+          value="Seattle, Washington"
+        />
+        <input id="submit" type="button" value="Take Me There" />
+      </span>
+    
 <div class="column-left">
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
@@ -44,9 +45,10 @@
         </form>
       </div>
 
+
       <div id="main">
         
-      
+  
         <!-- <sort dropdown -->
           
           <div class="dropdown-list">
@@ -97,13 +99,14 @@
     </div>
 
 
+    </main>
   </main>
-  <script type ="text/javascript" src="./map.js"></script>
-    <script defer type="text/javascript" src="likes.js"></script>
-    <script defer type="text/javascript" src="activities.js"></script>
-    <script defer type="text/javascript" src="comments.js"></script>
-    <script defer type="text/javascript" src="users.js"></script>
-    <script type="text/javascript" src="index.js"></script>
-
-  </body>
-</html>
+<script src="./config.js"  ></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script type ="text/javascript" src="./map.js"></script>
+<script defer type="text/javascript" src="likes.js"></script>
+<script defer type="text/javascript" src="activities.js"></script>
+<script defer type="text/javascript" src="comments.js"></script>
+<script defer type="text/javascript" src="users.js"></script>
+<script type="text/javascript" src="index.js"></script>
+  </body>	</html>
