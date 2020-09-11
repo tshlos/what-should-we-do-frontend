@@ -52,16 +52,21 @@ function appendActivities(activity) {
   activitiesContainer.appendChild(div);
 
   createOpenCard(div, activity);
-  // addToActivityList(activity.category);
+  addToActivityList(activity);
   appendCategory(activity.category);
   addMarkers(activity);
 
   closeNav();
 }
+addToActivityList();
 
-// function addToActivityList(category) {
-//   activityList.push(category);
-// }
+
+function addToActivityList(activity) {
+  if (activity != undefined) {
+    activityList.push(activity);
+  }
+}
+
 
 function openNav() {
   mySidebar.style.width = "25%";
@@ -76,7 +81,7 @@ function closeNav() {
 
 function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
-  form.addEventListener("submit", function (event) {
+  form.onsubmit = function (event) {
     event.preventDefault();
     const formFiled = event.target.children;
 
@@ -126,14 +131,23 @@ function createNewActivity() {
     formFiled[5].value = "";
     formFiled[6].value = "";
     formFiled[7].value = "";
-  });
+  };
 }
 
 listenforCardClickForMarkerPan();
 
 function listenforCardClickForMarkerPan() {
   activitiesContainer.addEventListener("click", function () {
-    console.log(event.target.parentElement.id);
-    debugger;
+    let cardID = event.target.parentElement.id;
+    let foundActivity = activityList.find((activity) => activity.id == cardID);
+    let newLatLng = new google.maps.LatLng(
+      foundActivity.latitude,
+      foundActivity.longitude
+    );
+    let latLng = `${foundActivity.latitude},${foundActivity.longitude}`;
+    map.panTo(newLatLng);
+
   });
 }
+
+// activity.list;
