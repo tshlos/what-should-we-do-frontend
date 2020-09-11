@@ -11,31 +11,23 @@
   </head>
 
   <body>
-
+    <nav>
+      <span><button class="openbtn" onclick="openNav()">&#9776; Open Menu</button></span>
+      <span>What Should We Do</span>
+        <span id="floating-panel">
+          <input id="name" type="textbox" placeholder="name" />
+          <input
+            id="address"
+            type="textbox"
+            placeholder="Enter a location"
+            value="Seattle, Washington"
+          />
+          <input id="submit" type="button" value="Take Me There" />
+        </span>
+    </nav>
     <main>
       
 <div class="column-left">
-<nav> 
-  <button id="signup">Signup</button>
-  <form id="login-form">
-  <label>Name</label>
-  <input placeholder=" Your name" />
-  <label> Address</label>
-  <input placeholder=" Your address" />
-  <label>City</label>
-  <input placeholder=" Your city" />
-  <label>State</label>
-  <input placeholder=" Your state" />
-  <label>Zip Code</label>
-  <input placeholder=" Your zip code" />
-  <label>Image</label>
-  <input placeholder="image url" />
-
-  <button class="user-btn">Signup</button>
-  
-</form>
-
-</nav>
       <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
         
@@ -54,8 +46,7 @@
 
       <div id="main">
         
-        <h1>What Should We Do</h1>
-        <button class="openbtn" onclick="openNav()">&#9776; Open Menu</button>
+      
         <!-- <sort dropdown -->
           
           <div class="dropdown-list">
@@ -90,55 +81,20 @@
         </div>
       </div>
 
-      
-      <!-- end of Modal ACtivity -->
 
-<!-- The Modal user -->
-<div id="userModal" class="userModal">
-  <!-- Modal content  -->
-  <div class="userModal-content">
-    <span class="close">&times;</span>
-  <form id="update-User-Form">
-    <label>Name</label>
-    <input class="username"/>
-    <label>Address</label>
-    <input class="useraddress" />
-    <label>City</label>
-    <input class="usercity" />
-    <label>State </label>
-    <input class="userstate" />
-    <label>Zip Code</label>
-    <input class="userzipcode" />
-    <label>Image</label>
-    <input class="userimage" />
-    <button id="update-user-btn">Update My Profile</button>
-  </form>
-  <button id="delete-user-btn">Delete My Profile</button>
-          <!-- <button class="delete-btn">&times;</button> -->
-  </div>
-</div>
 
 <!-- end of Modal User -->
 <div id="activity-container" class="column"> </div>
-</div>
+</div></div>
 
 <div class="column-right">
 
   <div id="map" ></div>
 
-      <script src="./config.js"  ></script>
-      <script  src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-      <div id="floating-panel">
-        <input id="name" type="textbox" placeholder="name" />
-        <input
-          id="address"
-          type="textbox"
-          placeholder="Enter a location"
-          value="Seattle, Washington"
-        />
-        <input id="submit" type="button" value="Take Me There" />
-      </div>
-    </div>
+    <script src="./config.js"  ></script>
+    <script  src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      
+</div>
 
   </main>
   <script type ="text/javascript" src="./map.js"></script>
