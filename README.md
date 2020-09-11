@@ -12,7 +12,6 @@ What Should We Do is an activity journal that helps users log in everywhere they
 **Features**
 Users can:
 - Enter their name and location and their location is updated on the map
-![name functionality](https://media.giphy.com/media/SYL0VZCG8hAn7t1Uys/giphy.gif)
 
 - Create new places/activities
 
@@ -23,6 +22,10 @@ Users can:
 - Review places
 
 - Click and view more information about an activity
+
+- Leave comments about an activity
+![comment functionality](https://media.giphy.com/media/SYL0VZCG8hAn7t1Uys/giphy.gif)
+
 
 - Update and delete reviews
 
