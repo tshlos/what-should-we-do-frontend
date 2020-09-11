@@ -1,17 +1,5 @@
-.comment-list {
-  list-style-type:none;
-  text-align: left;
-}
-
-.comment-value {
-  text-align: left;
-  font-weight: bold;
-  text-decoration: underline;
-
-
-
-}
-.delete-button, .update-button{
+.delete-button,
+.update-button {
   padding: 0;
   border: none;
   background: none;
@@ -23,79 +11,57 @@
   font-family: "Lato";
   margin: 5px;
   color: #1c3b63;
-
-}
-
-body {
-  background-color: ##FBF5F1
-  padding: 1rem;
-  margin: 0;
-  border-radius: 30px;
 }
 
 #main {
-  transition: margin-left 0.5s; /* If you want a transition effect */
+  transition: margin-left 0.5s;
   padding: 20px 20px;
 }
 
-#main h1 {
-  text-align: center;
-}
-
-#login-form {
-  display: none;
-}
 form {
   width: 100%;
   font-size: 18px;
   margin: 5px;
   line-height: 30px;
   padding: 25px;
-  /* padding-top: 90px; */
 }
 input {
   margin: 5px 0;
   border: grey solid 1px;
-  
 }
 
 img {
   justify-self: center;
-  height: 12rem;
+  height: auto;
   width: auto;
   margin: 3px;
   border-radius: 3px;
 }
-#new-activity-btn, #update-user-btn #delete-user-btn{
-  margin: 30px 0 10px  10px;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: #1c3b63;
-    color: #acdcd4;
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: none;
-    
-  }
-  .infocard {
-    margin: auto;
-    font-size: 15px;
-    cursor: pointer;
-   color: #1c3b63;
-background-color: white;
-    padding: 10px 10px;
-    border-radius: 10px;
-    border: none;
-  
-    height: 90%;
+#new-activity-btn {
+  margin: 30px 0 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #1c3b63;
+  color: #acdcd4;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+}
+.infocard {
+  margin: auto;
+  font-size: 15px;
+  cursor: pointer;
+  color: #1c3b63;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  height: 90%;
+}
 
-    
-  }
-  
-  #new-activity-btn:hover {
-    background-color: #444
-  }
-    
+#new-activity-btn:hover {
+  background-color: #444;
+}
+
 .activity-container {
   align-content: center;
   text-align: center;
@@ -110,69 +76,52 @@ background-color: white;
   height: 25rem;
   display: inline-grid;
   margin: 0.5rem;
-  overflow:scroll
+  overflow: scroll;
 }
 
 .card:hover {
-  border: #B1F2D5 solid 10px;
+  border: #b1f2d5 solid 10px;
 }
 
-.card img{
+.card img {
   width: 100%;
 }
 .card h4 {
+  font-size: 30px;
   font-weight: bold;
 }
 .card h5 {
   color: #7c459a;
 }
-/* .card h6 {
-
-} */
-.card span.like {
-  font-size: 20px;
-  cursor: pointer;
-}
-
 .card span {
   font-size: 16px;
   font-weight: bold;
   color: #7c459a;
   text-align: left;
-}
-.card p {
-  font-size: 14px;
-  text-align-last: center:
-
+  display: inline-flex;
 }
 
+.card span.like {
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
 
 /* The sidebar menu */
 .sidebar {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   margin: 0;
   background-color: #f9d776;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
 
-/* The sidebar links  */
-.sidebar a {
-  /* padding: 8px 8px 8px 32px; */
-  /* text-decoration: none;
-  font-size: 25px;
-  display: block;
-  transition: 0.3s;
-  color: #818181; */
-}
-
-/* Position and style the close button (top right corner) */
 .sidebar .closebtn {
   position: absolute;
   top: 0;
@@ -182,7 +131,6 @@ background-color: white;
   text-decoration: none;
   color: #818181;
 }
-
 
 .openbtn {
   font-size: 20px;
@@ -196,12 +144,9 @@ background-color: white;
 }
 
 .openbtn:hover {
-  background-color: #444
+  background-color: #444;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {
     padding-top: 15px;
@@ -219,13 +164,11 @@ background-color: white;
   position: absolute;
   top: 180px;
   bottom: 0;
-  right:0;
+  right: 0;
   height: 100%;
   width: 50%;
-
 }
 
-/* Optional: Makes the sample page fill the window. */
 html,
 body {
   height: 100%;
@@ -239,34 +182,30 @@ body {
   z-index: 5;
   margin-left: auto;
   margin-right: auto;
-
+  align-content: center;
   /* background-color: #fff; */
   padding: 2em;
   /* border: 1px solid #999; */
   text-align: center;
   line-height: 30px;
-  padding-left: 10px;
 }
 
-
 /* The Modal (background) */
-.modal, .userModal {
 
+.modal {
   display: none; /*Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
+  padding-left: 0; /* set to the left */
   left: 0;
   top: 0;
   width: 50%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content, .userModal-content {
+.modal-content {
   background-color: #acdcd4;
   margin: auto;
   text-align: left;
@@ -274,6 +213,29 @@ body {
   border: 5px solid #888;
   border-radius: 20px;
   width: 80%;
+}
+.comment-list {
+  list-style-type: none;
+  text-align: left;
+}
+
+.comment-value {
+  text-align: left;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.modal-content .name {
+  font-weight: bold;
+  font-size: 3em;
+}
+.modal-content .address {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.modal-content .image {
+  height: 10em;
+  width: auto;
 }
 
 /* The Close Button */
@@ -303,21 +265,12 @@ body {
 
 .column-left {
   float: left;
-  width: 50.00%;
+  width: 50%;
 }
 .column-right {
   /* float: right; */
-  width: 50.00%;
+  width: 50%;
 }
-
-nav span {
-  /* flex-direction: row; */
-  /* justify-content: center; */
-  color: red;
-  /* padding: 100px; */
-
-}
-
 nav {
   background: #f9d776;
   height: 100px;
@@ -329,34 +282,8 @@ nav {
   vertical-align: middle;
 }
 
-
-/* .food {
-  border: #cbaacb solid 10px;
+.logo {
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2em;
 }
-.coffee {
-  border: #d7eff8 solid 10px;
-}
-.music {
-  border: #acdcd4 solid 10px;
-}
-.icecream {
-  border: #B1F2D5 solid 10px;
-}
-.dog-park {
-  border: #1A6D70 solid 10px;
-}
-.gym {
-  border: #cce2cb solid 10px;
-}
-.shopping {
-  border: #ffdbcc solid 10px;
-}
-.movie {
-  border: #cbaacb solid 10px;
-}
-.bowling {
-  border: #fed7c3 solid 10px;
-}
-.bar {
-  border: #FDB56A solid 10px;
-} */
