@@ -21,6 +21,9 @@ Users can:
 ![like functionality](https://media.giphy.com/media/J1dzz9yGhyNwfIacLL/giphy.gif)
 
 - Review places
+
+- Click and view more information about an activity
+
 - Update and delete reviews
 
 **How To Install** 
