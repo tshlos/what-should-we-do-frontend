@@ -2,7 +2,7 @@
 
 **What is What We Should Do?**
 
-What Should We Do is an activity journal that helps users log in everywhere they visit. 
+What Should We Do is an activity journal that helps users log everywhere they visit. 
 
 ![what should we do img](https://i.imgur.com/9Cuydg6.png)
 .
@@ -12,15 +12,13 @@ What Should We Do is an activity journal that helps users log in everywhere they
 **Features**
 
 Users can:
-- Enter their name and location and their location is updated on the map
+- Enter their information to have it updated on the map
 
-- Create new places/activities
+- Create new activities
 
 - See and like activities
 
 ![like functionality](https://media.giphy.com/media/J1dzz9yGhyNwfIacLL/giphy.gif)
-
-- Review places
 
 - Click and view more information about an activity
 
@@ -30,6 +28,8 @@ Users can:
 
 
 - Update and delete reviews
+
+- View all the places they have visited on the map
 
 **How To Install** 
 1. Clone the repository to your machine.
