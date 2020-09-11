@@ -111,8 +111,12 @@ background-color: white;
   display: inline-grid;
   margin: 0.5rem;
   overflow:scroll
-  
 }
+
+.card:hover {
+  border: #B1F2D5 solid 10px;
+}
+
 .card img{
   width: 100%;
 }
@@ -322,7 +326,7 @@ nav {
 }
 
 
-.food {
+/* .food {
   border: #cbaacb solid 10px;
 }
 .coffee {
@@ -351,4 +355,4 @@ nav {
 }
 .bar {
   border: #FDB56A solid 10px;
-}
+} */
