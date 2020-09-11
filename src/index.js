@@ -126,7 +126,7 @@ function createNewActivity() {
     formFiled[5].value = "";
     formFiled[6].value = "";
     formFiled[7].value = "";
-  });
+  };
 }
 
 listenforCardClickForMarkerPan();
