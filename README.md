@@ -10,6 +10,7 @@ What Should We Do is an activity journal that helps users log in everywhere they
 .
 
 **Features**
+
 Users can:
 - Enter their name and location and their location is updated on the map
 
