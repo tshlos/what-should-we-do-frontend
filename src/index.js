@@ -79,7 +79,7 @@ function closeNav() {
 
 function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
-  form.addEventListener("submit", function (event) {
+  form.onsubmit = function (event) {
     event.preventDefault();
     const formFiled = event.target.children;
 
@@ -129,7 +129,7 @@ function createNewActivity() {
     formFiled[5].value = "";
     formFiled[6].value = "";
     formFiled[7].value = "";
-  });
+  };
 }
 
 listenforCardClickForMarkerPan();
@@ -144,6 +144,7 @@ function listenforCardClickForMarkerPan() {
     );
     let latLng = `${foundActivity.latitude},${foundActivity.longitude}`;
     map.panTo(newLatLng);
+
   });
 }
 
