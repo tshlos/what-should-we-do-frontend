@@ -158,6 +158,8 @@ img {
 
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
+
+
 #map {
   position: absolute;
   top: 180px;
@@ -189,6 +191,7 @@ body {
 }
 
 /* The Modal (background) */
+
 .modal {
   display: none; /*Hidden by default */
   position: fixed; /* Stay in place */
@@ -258,6 +261,7 @@ body {
   font-size: 16px;
   justify-self: center;
 }
+
 
 .column-left {
   float: left;
