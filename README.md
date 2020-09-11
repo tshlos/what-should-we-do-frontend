@@ -5,9 +5,7 @@
 What Should We Do is an activity journal that helps users log everywhere they visit. 
 
 ![what should we do img](https://i.imgur.com/9Cuydg6.png)
-.
-.
-.
+
 
 **Features**
 
@@ -15,6 +13,7 @@ Users can:
 - Enter their information to have it updated on the map
 
 - Create new activities
+
 ![add activities](https://media.giphy.com/media/homd5Ney4wSeSzpYnL/giphy.gif)
 
 - See and like activities
