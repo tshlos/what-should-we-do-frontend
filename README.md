@@ -8,7 +8,6 @@ What Should We Do is an activity journal that helps users log in everywhere they
 .
 .
 .
-![what should we do img](https://i.imgur.com/vYPMVAO.png)
 
 **Features**
 Users can:
