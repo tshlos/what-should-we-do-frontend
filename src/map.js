@@ -27,7 +27,7 @@ function geocodeAddress(geocoder, resultsMap) {
   geocoder.geocode({ address: address }, (results, status) => {
     if (status === "OK") {
       resultsMap.setCenter(results[0].geometry.location);
-      new google.maps.Marker({
+      marker = new google.maps.Marker({
         map: resultsMap,
         icon: `icons/person-icon.png`,
         position: results[0].geometry.location,
