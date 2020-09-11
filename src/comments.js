@@ -52,6 +52,8 @@ function addInfoToModal(activity) {
   category.textContent = activity.category;
   const image = modal.querySelector(".image");
   image.src = activity.image;
+  const description = modal.querySelector(".description");
+  description.textContent = activity.description;
   const address = modal.querySelector(".address");
   address.textContent = `${activity.address}, ${activity.city}, ${activity.state}`;
 
