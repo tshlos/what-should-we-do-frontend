@@ -21,7 +21,7 @@ function sortByCategory() {
       if (category === "show all") {
         activity.style.display = "inline-grid";
       } else {
-        if (activity.children[3].textContent === category) {
+        if (activity.children[4].textContent === category) {
           activity.style.display = "inline-grid";
         } else {
           activity.style.display = "none";
