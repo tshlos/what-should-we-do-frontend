@@ -1,10 +1,4 @@
-.update-button {
-  padding: 0;
-  border: none;
-  background: none;
-}
-
-.delete-button {
+.delete-button, .update-button{
   padding: 0;
   border: none;
   background: none;
@@ -305,6 +299,9 @@ nav {
   background: black;
   height: 100px;
   width: 1000%;
+
+.comment-list {
+  list-style-type:none;
 }
 
   /* When you mouse over the navigation links, change their color */

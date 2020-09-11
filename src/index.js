@@ -4,8 +4,8 @@ const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
 let activityList = [];
-fetchActivities();
 
+fetchActivities();
 async function fetchActivities() {
   const response = await fetch(activitiesURL);
   const activities = await response.json();
@@ -22,23 +22,20 @@ function appendActivities(activity) {
     address,
     city,
     state,
-    zipcode,
     description,
     image,
     category,
-    comments,
     likes,
   } = activity;
-  const div = document.createElement("div"); // card
-  const h4 = document.createElement("h4"); // name
-  const h5 = document.createElement("h5"); // category
-  const h6 = document.createElement("h6"); // address
-  const p = document.createElement("p"); // description
-  const img = document.createElement("img"); // image
-
-  const ul = document.createElement("ul"); // comments
-  const heart = document.createElement("span"); // likes
-  const likeText = document.createElement("span"); // likes
+  const div = document.createElement("div");
+  const h4 = document.createElement("h4");
+  const h5 = document.createElement("h5");
+  const h6 = document.createElement("h6");
+  const p = document.createElement("p");
+  const img = document.createElement("img");
+  const ul = document.createElement("ul");
+  const heart = document.createElement("span");
+  const likeText = document.createElement("span");
 
   div.className = `card ${category}`;
   div.id = id;
@@ -121,14 +118,14 @@ function createNewActivity() {
       .then((response) => response.json())
       .then((activity) => appendActivities(activity));
 
-    formFiled[0].value = " ";
-    formFiled[1].value = " ";
-    formFiled[2].value = " ";
-    formFiled[3].value = " ";
-    formFiled[4].value = " ";
-    formFiled[5].value = " ";
-    formFiled[6].value = " ";
-    formFiled[7].value = " ";
+    formFiled[0].value = "";
+    formFiled[1].value = "";
+    formFiled[2].value = "";
+    formFiled[3].value = "";
+    formFiled[4].value = "";
+    formFiled[5].value = "";
+    formFiled[6].value = "";
+    formFiled[7].value = "";
   });
 }
 
