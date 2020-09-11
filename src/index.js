@@ -30,26 +30,30 @@ function appendActivities(activity) {
   const div = document.createElement("div");
   const h4 = document.createElement("h4");
   const h5 = document.createElement("h5");
-  const h6 = document.createElement("h6");
-  const p = document.createElement("p");
+  // const h6 = document.createElement("h6");
+  // const p = document.createElement("p");
   const img = document.createElement("img");
   const ul = document.createElement("ul");
   const heart = document.createElement("span");
   const likeText = document.createElement("span");
+  const btn = document.createElement("button");
+  btn.className = "infocard";
+  btn.textContent = "click for info";
 
   div.className = `card ${category}`;
   div.id = id;
   h4.textContent = name;
   h5.textContent = category;
-  h6.textContent = `${address}, ${city}, ${state}`;
-  p.textContent = description;
+  // h6.textContent = `${address}, ${city}, ${state}`;
+  // p.textContent = description;
   img.src = image;
   heart.className = "like";
   heart.textContent = unlike;
   likeText.textContent = `${likes} likes`;
 
-  div.append(heart, likeText, h4, h5, img, h6, p);
+  div.append(heart, likeText, h4, btn, h5, img);
   activitiesContainer.appendChild(div);
+
 
   createOpenCard(div, activity);
   addToActivityList(activity);

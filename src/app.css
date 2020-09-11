@@ -1,4 +1,17 @@
-/* .delete-button, .update-button{
+.comment-list {
+  list-style-type:none;
+  text-align: left;
+}
+
+.comment-value {
+  text-align: left;
+  font-weight: bold;
+  text-decoration: underline;
+
+
+
+}
+.delete-button, .update-button{
   padding: 0;
   border: none;
   background: none;
@@ -10,7 +23,7 @@
   font-family: "Lato";
   margin: 5px;
   color: #1c3b63;
-  /* text-align: center; */
+
 }
 
 body {
@@ -27,8 +40,8 @@ body {
 
 #main h1 {
   text-align: center;
-  
 }
+
 #login-form {
   display: none;
 }
@@ -50,6 +63,8 @@ img {
   justify-self: center;
   height: 12rem;
   width: auto;
+  margin: 3px;
+  border-radius: 3px;
 }
 #new-activity-btn, #update-user-btn #delete-user-btn{
   margin: 30px 0 10px  10px;
@@ -66,13 +81,14 @@ img {
     margin: auto;
     font-size: 15px;
     cursor: pointer;
-    background-color: #1c3b63;
-    color: #acdcd4;
-    padding: 10px 15px;
+   color: #1c3b63;
+background-color: white;
+    padding: 10px 10px;
     border-radius: 10px;
     border: none;
-    width: 60%;
-    
+  
+    height: 90%;
+
     
   }
   
@@ -106,19 +122,15 @@ img {
 .card h5 {
   color: #7c459a;
 }
-.card h6 {
+/* .card h6 {
 
-}
+} */
 .card span.like {
   font-size: 20px;
   cursor: pointer;
 }
 
 .card span {
-
-  display:inline;
-  white-space: nowrap;
-  display:inline-block;
   font-size: 16px;
   font-weight: bold;
   color: #7c459a;
@@ -128,13 +140,6 @@ img {
   font-size: 14px;
   text-align-last: center:
 
-}
-
-.food {
-  border: #d7eff8 solid 10px;
-}
-.coffee {
-  border: #acdcd4 solid 10px;
 }
 
 
@@ -206,14 +211,12 @@ img {
 * element that contains the map. */
 #map {
   position: absolute;
-  z-index: -5;
   top: 180px;
   bottom: 0;
   right:0;
-  /* height: 100%; */
+  height: 100%;
   width: 50%;
-  border-radius: 10px;
-  border: 10px solid #1c3b63;
+
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -259,8 +262,9 @@ body {
 .modal-content, .userModal-content {
   background-color: #acdcd4;
   margin: auto;
+  text-align: left;
   padding: 20px;
-  border: 1px solid #888;
+  border: 5px solid #888;
   border-radius: 20px;
   width: 80%;
 }
@@ -317,13 +321,34 @@ nav {
   vertical-align: middle;
 }
 
-.comment-list {
-  list-style-type:none;
+
+.food {
+  border: #cbaacb solid 10px;
 }
-
-  /* When you mouse over the navigation links, change their color */
-  /* .sidebar a:hover {
-    color: #f1f1f1;
-  } */
-
-   */
+.coffee {
+  border: #d7eff8 solid 10px;
+}
+.music {
+  border: #acdcd4 solid 10px;
+}
+.icecream {
+  border: #B1F2D5 solid 10px;
+}
+.dog-park {
+  border: #1A6D70 solid 10px;
+}
+.gym {
+  border: #cce2cb solid 10px;
+}
+.shopping {
+  border: #ffdbcc solid 10px;
+}
+.movie {
+  border: #cbaacb solid 10px;
+}
+.bowling {
+  border: #fed7c3 solid 10px;
+}
+.bar {
+  border: #FDB56A solid 10px;
+}
