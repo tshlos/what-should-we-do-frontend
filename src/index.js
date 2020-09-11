@@ -76,7 +76,7 @@ function closeNav() {
 
 function createNewActivity() {
   const form = document.getElementById("new-Activity-Form");
-  form.addEventListener("submit", function (event) {
+  form.onsubmit = function (event) {
     event.preventDefault();
     const formFiled = event.target.children;
 
@@ -134,6 +134,5 @@ listenforCardClickForMarkerPan();
 function listenforCardClickForMarkerPan() {
   activitiesContainer.addEventListener("click", function () {
     console.log(event.target.parentElement.id);
-    debugger;
   });
 }
