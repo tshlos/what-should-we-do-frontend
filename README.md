@@ -17,6 +17,7 @@ Users can:
 - Create new places/activities
 
 - See and like activities
+
 ![like functionality](https://media.giphy.com/media/J1dzz9yGhyNwfIacLL/giphy.gif)
 
 - Review places
