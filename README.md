@@ -21,7 +21,7 @@ Users can:
 ![like functionality](https://media.giphy.com/media/J1dzz9yGhyNwfIacLL/giphy.gif)
 
 - Review places
--Update and delete reviews
+- Update and delete reviews
 
 **How To Install** 
 1. Clone the repository to your machine.
