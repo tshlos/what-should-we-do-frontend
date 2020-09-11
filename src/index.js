@@ -3,7 +3,7 @@ const activitiesContainer = document.getElementById("activity-container");
 const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
-let activityList = [];
+// let activityList = [];
 
 fetchActivities();
 async function fetchActivities() {
@@ -60,11 +60,13 @@ function appendActivities(activity) {
 }
 addToActivityList();
 
+
 function addToActivityList(activity) {
   if (activity != undefined) {
     activityList.push(activity);
   }
 }
+
 
 function openNav() {
   mySidebar.style.width = "25%";
