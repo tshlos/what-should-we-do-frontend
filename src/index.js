@@ -3,7 +3,7 @@ const activitiesContainer = document.getElementById("activity-container");
 const mySidebar = document.getElementById("mySidebar");
 const unlike = "♡";
 const like = "♥";
-let activityList = [];
+// let activityList = [];
 
 fetchActivities();
 async function fetchActivities() {
@@ -54,16 +54,23 @@ function appendActivities(activity) {
   div.append(heart, likeText, h4, btn, h5, img);
   activitiesContainer.appendChild(div);
 
-  addToActivityList(activity.category);
+
+  createOpenCard(div, activity);
+  addToActivityList(activity);
   appendCategory(activity.category);
   addMarkers(activity);
 
   closeNav();
 }
+addToActivityList();
 
-function addToActivityList(category) {
-  activityList.push(category);
+
+function addToActivityList(activity) {
+  if (activity != undefined) {
+    activityList.push(activity);
+  }
 }
+
 
 function openNav() {
   mySidebar.style.width = "25%";
@@ -135,6 +142,16 @@ listenforCardClickForMarkerPan();
 
 function listenforCardClickForMarkerPan() {
   activitiesContainer.addEventListener("click", function () {
-    console.log(event.target.parentElement.id);
+    let cardID = event.target.parentElement.id;
+    let foundActivity = activityList.find((activity) => activity.id == cardID);
+    let newLatLng = new google.maps.LatLng(
+      foundActivity.latitude,
+      foundActivity.longitude
+    );
+    let latLng = `${foundActivity.latitude},${foundActivity.longitude}`;
+    map.panTo(newLatLng);
+
   });
 }
+
+// activity.list;
