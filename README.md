@@ -15,6 +15,7 @@ Users can:
 - Enter their information to have it updated on the map
 
 - Create new activities
+![add activities](https://media.giphy.com/media/homd5Ney4wSeSzpYnL/giphy.gif)
 
 - See and like activities
 
