@@ -26,7 +26,7 @@ Users can:
 
 - Leave comments about an activity
 
-![comment functionality](https://media.giphy.com/media/SYL0VZCG8hAn7t1Uys/giphy.gif)
+![comment functionality](https://media.giphy.com/media/f6s1BSyv8JmkoSx8cU/giphy.gif)
 
 
 - Update and delete reviews
