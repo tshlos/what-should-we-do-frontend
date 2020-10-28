@@ -37,3 +37,7 @@ Users can:
 3. `$ db:migrate`
 4. `$ db:seed`
 5. Run `rails s` to start the server and enter the application
+
+
+### What Should We Do backend:
+https://github.com/tshlos/what-should-we-do-backend
